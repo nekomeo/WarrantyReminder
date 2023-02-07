@@ -7,26 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		732CB7C42992E61200DFFEEA /* WarrantyReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CB7C32992E61200DFFEEA /* WarrantyReminderApp.swift */; };
-		732CB7C62992E61200DFFEEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CB7C52992E61200DFFEEA /* ContentView.swift */; };
-		732CB7C82992E61300DFFEEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 732CB7C72992E61300DFFEEA /* Assets.xcassets */; };
-		732CB7CB2992E61300DFFEEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 732CB7CA2992E61300DFFEEA /* Preview Assets.xcassets */; };
-		732CB7CD2992E61300DFFEEA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CB7CC2992E61300DFFEEA /* Persistence.swift */; };
-		732CB7D02992E61300DFFEEA /* WarrantyReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 732CB7CE2992E61300DFFEEA /* WarrantyReminder.xcdatamodeld */; };
+		73CA97E62992F48200D2CC92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97E52992F48200D2CC92 /* AppDelegate.swift */; };
+		73CA97E82992F48200D2CC92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97E72992F48200D2CC92 /* SceneDelegate.swift */; };
+		73CA97EA2992F48200D2CC92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97E92992F48200D2CC92 /* ViewController.swift */; };
+		73CA97ED2992F48200D2CC92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CA97EB2992F48200D2CC92 /* Main.storyboard */; };
+		73CA97F02992F48200D2CC92 /* WarrantyReminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97EE2992F48200D2CC92 /* WarrantyReminder.xcdatamodeld */; };
+		73CA97F22992F48400D2CC92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CA97F12992F48400D2CC92 /* Assets.xcassets */; };
+		73CA97F52992F48400D2CC92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CA97F32992F48400D2CC92 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		732CB7C02992E61200DFFEEA /* WarrantyReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarrantyReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		732CB7C32992E61200DFFEEA /* WarrantyReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarrantyReminderApp.swift; sourceTree = "<group>"; };
-		732CB7C52992E61200DFFEEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		732CB7C72992E61300DFFEEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		732CB7CA2992E61300DFFEEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		732CB7CC2992E61300DFFEEA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		732CB7CF2992E61300DFFEEA /* WarrantyReminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WarrantyReminder.xcdatamodel; sourceTree = "<group>"; };
+		73CA97E22992F48200D2CC92 /* WarrantyReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarrantyReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73CA97E52992F48200D2CC92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		73CA97E72992F48200D2CC92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		73CA97E92992F48200D2CC92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		73CA97EC2992F48200D2CC92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		73CA97EF2992F48200D2CC92 /* WarrantyReminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WarrantyReminder.xcdatamodel; sourceTree = "<group>"; };
+		73CA97F12992F48400D2CC92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		73CA97F42992F48400D2CC92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		73CA97F62992F48400D2CC92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		732CB7BD2992E61200DFFEEA /* Frameworks */ = {
+		73CA97DF2992F48200D2CC92 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,53 +39,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		732CB7B72992E61200DFFEEA = {
+		73CA97D92992F48200D2CC92 = {
 			isa = PBXGroup;
 			children = (
-				732CB7C22992E61200DFFEEA /* WarrantyReminder */,
-				732CB7C12992E61200DFFEEA /* Products */,
+				73CA97E42992F48200D2CC92 /* WarrantyReminder */,
+				73CA97E32992F48200D2CC92 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		732CB7C12992E61200DFFEEA /* Products */ = {
+		73CA97E32992F48200D2CC92 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				732CB7C02992E61200DFFEEA /* WarrantyReminder.app */,
+				73CA97E22992F48200D2CC92 /* WarrantyReminder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		732CB7C22992E61200DFFEEA /* WarrantyReminder */ = {
+		73CA97E42992F48200D2CC92 /* WarrantyReminder */ = {
 			isa = PBXGroup;
 			children = (
-				732CB7C32992E61200DFFEEA /* WarrantyReminderApp.swift */,
-				732CB7C52992E61200DFFEEA /* ContentView.swift */,
-				732CB7C72992E61300DFFEEA /* Assets.xcassets */,
-				732CB7CC2992E61300DFFEEA /* Persistence.swift */,
-				732CB7CE2992E61300DFFEEA /* WarrantyReminder.xcdatamodeld */,
-				732CB7C92992E61300DFFEEA /* Preview Content */,
+				73CA97E52992F48200D2CC92 /* AppDelegate.swift */,
+				73CA97E72992F48200D2CC92 /* SceneDelegate.swift */,
+				73CA97E92992F48200D2CC92 /* ViewController.swift */,
+				73CA97EB2992F48200D2CC92 /* Main.storyboard */,
+				73CA97F12992F48400D2CC92 /* Assets.xcassets */,
+				73CA97F32992F48400D2CC92 /* LaunchScreen.storyboard */,
+				73CA97F62992F48400D2CC92 /* Info.plist */,
+				73CA97EE2992F48200D2CC92 /* WarrantyReminder.xcdatamodeld */,
 			);
 			path = WarrantyReminder;
-			sourceTree = "<group>";
-		};
-		732CB7C92992E61300DFFEEA /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				732CB7CA2992E61300DFFEEA /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		732CB7BF2992E61200DFFEEA /* WarrantyReminder */ = {
+		73CA97E12992F48200D2CC92 /* WarrantyReminder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 732CB7D32992E61300DFFEEA /* Build configuration list for PBXNativeTarget "WarrantyReminder" */;
+			buildConfigurationList = 73CA97F92992F48400D2CC92 /* Build configuration list for PBXNativeTarget "WarrantyReminder" */;
 			buildPhases = (
-				732CB7BC2992E61200DFFEEA /* Sources */,
-				732CB7BD2992E61200DFFEEA /* Frameworks */,
-				732CB7BE2992E61200DFFEEA /* Resources */,
+				73CA97DE2992F48200D2CC92 /* Sources */,
+				73CA97DF2992F48200D2CC92 /* Frameworks */,
+				73CA97E02992F48200D2CC92 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -90,25 +87,25 @@
 			);
 			name = WarrantyReminder;
 			productName = WarrantyReminder;
-			productReference = 732CB7C02992E61200DFFEEA /* WarrantyReminder.app */;
+			productReference = 73CA97E22992F48200D2CC92 /* WarrantyReminder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		732CB7B82992E61200DFFEEA /* Project object */ = {
+		73CA97DA2992F48200D2CC92 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					732CB7BF2992E61200DFFEEA = {
+					73CA97E12992F48200D2CC92 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 732CB7BB2992E61200DFFEEA /* Build configuration list for PBXProject "WarrantyReminder" */;
+			buildConfigurationList = 73CA97DD2992F48200D2CC92 /* Build configuration list for PBXProject "WarrantyReminder" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -116,44 +113,64 @@
 				en,
 				Base,
 			);
-			mainGroup = 732CB7B72992E61200DFFEEA;
-			productRefGroup = 732CB7C12992E61200DFFEEA /* Products */;
+			mainGroup = 73CA97D92992F48200D2CC92;
+			productRefGroup = 73CA97E32992F48200D2CC92 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				732CB7BF2992E61200DFFEEA /* WarrantyReminder */,
+				73CA97E12992F48200D2CC92 /* WarrantyReminder */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		732CB7BE2992E61200DFFEEA /* Resources */ = {
+		73CA97E02992F48200D2CC92 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				732CB7CB2992E61300DFFEEA /* Preview Assets.xcassets in Resources */,
-				732CB7C82992E61300DFFEEA /* Assets.xcassets in Resources */,
+				73CA97F52992F48400D2CC92 /* LaunchScreen.storyboard in Resources */,
+				73CA97F22992F48400D2CC92 /* Assets.xcassets in Resources */,
+				73CA97ED2992F48200D2CC92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		732CB7BC2992E61200DFFEEA /* Sources */ = {
+		73CA97DE2992F48200D2CC92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				732CB7CD2992E61300DFFEEA /* Persistence.swift in Sources */,
-				732CB7C62992E61200DFFEEA /* ContentView.swift in Sources */,
-				732CB7C42992E61200DFFEEA /* WarrantyReminderApp.swift in Sources */,
-				732CB7D02992E61300DFFEEA /* WarrantyReminder.xcdatamodeld in Sources */,
+				73CA97EA2992F48200D2CC92 /* ViewController.swift in Sources */,
+				73CA97E62992F48200D2CC92 /* AppDelegate.swift in Sources */,
+				73CA97E82992F48200D2CC92 /* SceneDelegate.swift in Sources */,
+				73CA97F02992F48200D2CC92 /* WarrantyReminder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		73CA97EB2992F48200D2CC92 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73CA97EC2992F48200D2CC92 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		73CA97F32992F48400D2CC92 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73CA97F42992F48400D2CC92 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		732CB7D12992E61300DFFEEA /* Debug */ = {
+		73CA97F72992F48400D2CC92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -213,7 +230,7 @@
 			};
 			name = Debug;
 		};
-		732CB7D22992E61300DFFEEA /* Release */ = {
+		73CA97F82992F48400D2CC92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -267,20 +284,19 @@
 			};
 			name = Release;
 		};
-		732CB7D42992E61300DFFEEA /* Debug */ = {
+		73CA97FA2992F48400D2CC92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WarrantyReminder/Preview Content\"";
 				DEVELOPMENT_TEAM = L595LLJNVG;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = WarrantyReminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -296,20 +312,19 @@
 			};
 			name = Debug;
 		};
-		732CB7D52992E61300DFFEEA /* Release */ = {
+		73CA97FB2992F48400D2CC92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WarrantyReminder/Preview Content\"";
 				DEVELOPMENT_TEAM = L595LLJNVG;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = WarrantyReminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,20 +343,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		732CB7BB2992E61200DFFEEA /* Build configuration list for PBXProject "WarrantyReminder" */ = {
+		73CA97DD2992F48200D2CC92 /* Build configuration list for PBXProject "WarrantyReminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				732CB7D12992E61300DFFEEA /* Debug */,
-				732CB7D22992E61300DFFEEA /* Release */,
+				73CA97F72992F48400D2CC92 /* Debug */,
+				73CA97F82992F48400D2CC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		732CB7D32992E61300DFFEEA /* Build configuration list for PBXNativeTarget "WarrantyReminder" */ = {
+		73CA97F92992F48400D2CC92 /* Build configuration list for PBXNativeTarget "WarrantyReminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				732CB7D42992E61300DFFEEA /* Debug */,
-				732CB7D52992E61300DFFEEA /* Release */,
+				73CA97FA2992F48400D2CC92 /* Debug */,
+				73CA97FB2992F48400D2CC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -349,17 +364,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		732CB7CE2992E61300DFFEEA /* WarrantyReminder.xcdatamodeld */ = {
+		73CA97EE2992F48200D2CC92 /* WarrantyReminder.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				732CB7CF2992E61300DFFEEA /* WarrantyReminder.xcdatamodel */,
+				73CA97EF2992F48200D2CC92 /* WarrantyReminder.xcdatamodel */,
 			);
-			currentVersion = 732CB7CF2992E61300DFFEEA /* WarrantyReminder.xcdatamodel */;
+			currentVersion = 73CA97EF2992F48200D2CC92 /* WarrantyReminder.xcdatamodel */;
 			path = WarrantyReminder.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 732CB7B82992E61200DFFEEA /* Project object */;
+	rootObject = 73CA97DA2992F48200D2CC92 /* Project object */;
 }
