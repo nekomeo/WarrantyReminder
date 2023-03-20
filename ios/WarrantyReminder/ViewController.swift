@@ -7,21 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
 
   let tableView = UITableView()
-  var data = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      for x in 0...11 {
-        data.append("Some data \(x)")
-      }
-      
       view.addSubview(tableView)
 
-      tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+      tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.identifier)
       tableView.delegate = self
       tableView.dataSource = self
     }
@@ -30,23 +25,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     super.viewDidLayoutSubviews()
     tableView.frame = view.bounds
   }
-  
+
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return data.count
+    return 10
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    
-    cell.textLabel?.text = data[indexPath.row]
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
+      return UITableViewCell()
+    }
+    cell.configure(text: "Custom \(indexPath.row+1)")
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    print("cell \(indexPath.row) tapped")
   }
-
 }
-
