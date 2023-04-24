@@ -12,7 +12,8 @@ class ItemTableViewCell: UITableViewCell {
   
   private let detailButton: UIButton = {
     let detailButton = UIButton()
-    detailButton.backgroundColor = .red
+    detailButton.layer.borderWidth = 1
+    detailButton.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
     
     return detailButton
   }()

@@ -8,41 +8,51 @@
 import UIKit
 
 class ViewController: UIViewController {
+	
+	private let button: UIButton = {
+		let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 52))
+		button.setTitle("Hello", for: .normal)
+		button.backgroundColor = .white
+		button.setTitleColor(.black, for: .normal)
+		return button
+	}()
 
   let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      view.addSubview(tableView)
-
-      tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.identifier)
-      tableView.delegate = self
-      tableView.dataSource = self
+			
+			view.backgroundColor = .systemMint
+			view.addSubview(button)
+			button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
-  
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    tableView.frame = view.bounds
+		button.center = view.center
   }
+	
+	@objc func didTapButton() {
+		let tabBarVC = TabViewController()
+		
+		let vc1 = UINavigationController(rootViewController: TabOneViewController())
+		let vc2 = UINavigationController(rootViewController: TabTwoViewController())
+		
+		vc1.title = "Tab 1"
+		vc2.title = "Tab 2"
+		
+		tabBarVC.setViewControllers([vc1, vc2], animated: false)
+		
+		guard let items = tabBarVC.tabBar.items else { return }
+		
+		let images = ["house", "gear"]
 
-}
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
-      return UITableViewCell()
-    }
-    cell.configure(text: "Custom \(indexPath.row+1)")
-    
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-  }
+		for x in 0..<items.count {
+			items[x].image = UIImage(systemName: images[x])
+		}
+		tabBarVC.modalPresentationStyle = .fullScreen
+		
+		tabBarVC.modalPresentationStyle = .fullScreen
+		present(tabBarVC, animated: true)
+	}
 }
