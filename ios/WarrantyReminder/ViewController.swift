@@ -37,19 +37,22 @@ class ViewController: UIViewController {
 		
 		let vc1 = UINavigationController(rootViewController: TabOneViewController())
 		let vc2 = UINavigationController(rootViewController: TabTwoViewController())
+		let vc3 = UINavigationController(rootViewController: TabThreeViewController())
 		
 		vc1.title = "Tab 1"
 		vc2.title = "Tab 2"
+		vc3.title = "Tab 3"
 		
-		tabBarVC.setViewControllers([vc1, vc2], animated: false)
+		tabBarVC.setViewControllers([vc1, vc2, vc3], animated: false)
 		
 		guard let items = tabBarVC.tabBar.items else { return }
 		
-		let images = ["house", "gear"]
+		let images = ["folder", "calendar", "gear"]
 
 		for x in 0..<items.count {
 			items[x].image = UIImage(systemName: images[x])
 		}
+
 		tabBarVC.modalPresentationStyle = .fullScreen
 		
 		tabBarVC.modalPresentationStyle = .fullScreen

@@ -10,6 +10,7 @@
 		7323A1FD29F5EE990046E213 /* TabOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323A1FC29F5EE990046E213 /* TabOneViewController.swift */; };
 		7323A1FF29F5EEF00046E213 /* TabTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323A1FE29F5EEF00046E213 /* TabTwoViewController.swift */; };
 		7323A20129F600E50046E213 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7323A20029F600E50046E213 /* TabViewController.swift */; };
+		738EF67129F62D4900049856 /* TabThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738EF67029F62D4900049856 /* TabThreeViewController.swift */; };
 		73C1C63029C80B69006AFCC7 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C1C62F29C80B69006AFCC7 /* ItemTableViewCell.swift */; };
 		73CA97E62992F48200D2CC92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97E52992F48200D2CC92 /* AppDelegate.swift */; };
 		73CA97E82992F48200D2CC92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA97E72992F48200D2CC92 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 		7323A1FC29F5EE990046E213 /* TabOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabOneViewController.swift; sourceTree = "<group>"; };
 		7323A1FE29F5EEF00046E213 /* TabTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTwoViewController.swift; sourceTree = "<group>"; };
 		7323A20029F600E50046E213 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		738EF67029F62D4900049856 /* TabThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabThreeViewController.swift; sourceTree = "<group>"; };
 		73C1C62F29C80B69006AFCC7 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		73CA97E22992F48200D2CC92 /* WarrantyReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarrantyReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CA97E52992F48200D2CC92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				73CA97E72992F48200D2CC92 /* SceneDelegate.swift */,
 				7323A1FC29F5EE990046E213 /* TabOneViewController.swift */,
 				7323A1FE29F5EEF00046E213 /* TabTwoViewController.swift */,
+				738EF67029F62D4900049856 /* TabThreeViewController.swift */,
 				7323A20029F600E50046E213 /* TabViewController.swift */,
 				73CA97E92992F48200D2CC92 /* ViewController.swift */,
 				73C1C62F29C80B69006AFCC7 /* ItemTableViewCell.swift */,
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7323A20129F600E50046E213 /* TabViewController.swift in Sources */,
+				738EF67129F62D4900049856 /* TabThreeViewController.swift in Sources */,
 				7323A1FD29F5EE990046E213 /* TabOneViewController.swift in Sources */,
 				73CA97EA2992F48200D2CC92 /* ViewController.swift in Sources */,
 				73CA97E62992F48200D2CC92 /* AppDelegate.swift in Sources */,
