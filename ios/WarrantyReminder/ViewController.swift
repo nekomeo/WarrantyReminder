@@ -14,18 +14,22 @@ class ViewController: UIViewController {
 		button.setTitle("Hello", for: .normal)
 		button.backgroundColor = .white
 		button.setTitleColor(.black, for: .normal)
+		button.layer.borderWidth = 1
+		button.layer.borderColor = UIColor.systemMint.cgColor
+		button.layer.cornerRadius = 10
 		return button
 	}()
 
   let tableView = UITableView()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-			
-			view.backgroundColor = .systemMint
-			view.addSubview(button)
-			button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-    }
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+
+		view.backgroundColor = .systemMint
+		view.addSubview(button)
+	}
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()

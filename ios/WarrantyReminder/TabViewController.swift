@@ -9,16 +9,13 @@ import UIKit
 
 class TabViewController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-			let bar = UITabBarAppearance()
-			bar.configureWithOpaqueBackground()
-			bar.backgroundColor = .red
-			tabBar.standardAppearance = bar
-    }
-    
+		// Do any additional setup after loading the view.
+		self.tabBar.tintColor = .systemYellow
+		self.tabBar.unselectedItemTintColor = .systemIndigo
+	}
 
     /*
     // MARK: - Navigation
