@@ -9,32 +9,53 @@ import UIKit
 
 class TabOneViewController: UIViewController {
 	
+	private let addButton: UIBarButtonItem = {
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
+		return addButton
+	}()
+	
+	private let editButton: UIBarButtonItem = {
+		let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: Any?.self, action: #selector(didPressEdit))
+		return editButton
+	}()
+
+//	let containerView = UIView(frame: UIScreen.main.bounds)
+	let containerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 400))
 	let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-//	let testView = UIView(frame: UIScreen.main.bounds)
-	let testView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-			self.view.backgroundColor = UIColor.systemCyan
-			self.title = "Tab 1"
+		self.view.backgroundColor = UIColor.systemCyan
+		self.title = "Due Bills"
 			
-			view.addSubview(testView)
-			testView.addSubview(tableView)
+		view.addSubview(containerView)
+		containerView.addSubview(tableView)
 			
-			tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.identifier)
-			tableView.delegate = self
-			tableView.dataSource = self
-    }
+		tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.identifier)
+		tableView.delegate = self
+		tableView.dataSource = self
+			
+		self.navigationItem.rightBarButtonItem = addButton
+		self.navigationItem.leftBarButtonItem = editButton
+	}
   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 
-		tableView.frame = testView.bounds
+		tableView.frame = containerView.bounds
+	}
+	
+	@objc func didPressAdd() {
+		print("Add button pressed")
+	}
+	
+	@objc func didPressEdit() {
+		print("Edit button pressed")
 	}
     
     /*
