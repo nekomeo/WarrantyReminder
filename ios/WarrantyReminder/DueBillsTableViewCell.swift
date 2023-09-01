@@ -49,9 +49,10 @@ class DueBillsTableViewCell: UITableViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    let detailButtonSize = contentView.frame.size.height - 5
+    let detailButtonSize = contentView.frame.size.height
     
-    billName.frame = CGRect(x: detailButtonSize - 15, y: 5, width: 100, height: detailButtonSize)
-    detailButton.frame = CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: 5, width: detailButtonSize / 2, height: detailButtonSize / 2)
+		billName.frame = CGRect(x: detailButtonSize / 2, y: 0, width: contentView.frame.size.width / 2, height: detailButtonSize)
+		
+		detailButton.frame = CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: detailButtonSize / 1.5, height: detailButtonSize / 1.5)
   }
 }
