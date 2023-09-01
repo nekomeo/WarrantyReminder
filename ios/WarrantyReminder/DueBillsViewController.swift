@@ -23,7 +23,9 @@ class DueBillsViewController: UIViewController {
 	let dueBillsContainerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
 	let upcomingBillsContainerView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
 	let nextBillsContainerView = UIView(frame: CGRect(x: 0, y: 520, width: UIScreen.main.bounds.width, height: 200))
+	
 	let dueBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+	let upcomingBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,18 +35,24 @@ class DueBillsViewController: UIViewController {
 		
 		dueBillsTableView.backgroundColor = .red
 		
-		upcomingBillsContainerView.backgroundColor = .orange
+		upcomingBillsTableView.backgroundColor = .orange
 		
 		nextBillsContainerView.backgroundColor = .blue
 			
 		view.addSubview(dueBillsContainerView)
 		view.addSubview(upcomingBillsContainerView)
 		view.addSubview(nextBillsContainerView)
+		
 		dueBillsContainerView.addSubview(dueBillsTableView)
+		upcomingBillsContainerView.addSubview(upcomingBillsTableView)
 			
 		dueBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
 		dueBillsTableView.delegate = self
 		dueBillsTableView.dataSource = self
+		
+		upcomingBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
+		upcomingBillsTableView.delegate = self
+		upcomingBillsTableView.dataSource = self
 			
 		self.navigationItem.leftBarButtonItem = editButton
 		self.navigationItem.rightBarButtonItem = addButton
@@ -58,6 +66,7 @@ class DueBillsViewController: UIViewController {
 		super.viewDidLayoutSubviews()
 
 		dueBillsTableView.frame = dueBillsContainerView.bounds
+		upcomingBillsTableView.frame = upcomingBillsContainerView.bounds
 	}
 	
 	@objc func didPressAdd() {
