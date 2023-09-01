@@ -35,14 +35,9 @@ class DueBillsViewController: UIViewController {
 		self.title = "Due Bills"
 		
 		dueBillsTableView.backgroundColor = .red
-		
 		upcomingBillsTableView.backgroundColor = .orange
-		
 		nextBillsTableView.backgroundColor = .blue
-			
-		view.addSubview(dueBillsContainerView)
-		view.addSubview(upcomingBillsContainerView)
-		view.addSubview(nextBillsContainerView)
+		
 		
 		dueBillsContainerView.addSubview(dueBillsTableView)
 		upcomingBillsContainerView.addSubview(upcomingBillsTableView)
@@ -59,6 +54,10 @@ class DueBillsViewController: UIViewController {
 		nextBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
 		nextBillsTableView.delegate = self
 		nextBillsTableView.dataSource = self
+		
+		view.addSubview(dueBillsContainerView)
+		view.addSubview(upcomingBillsContainerView)
+		view.addSubview(nextBillsContainerView)
 			
 		self.navigationItem.leftBarButtonItem = editButton
 		self.navigationItem.rightBarButtonItem = addButton
