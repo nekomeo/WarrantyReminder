@@ -97,7 +97,34 @@ class DueBillsViewController: UIViewController {
 
 extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Due Bills"
+		switch tableView {
+			case dueBillsTableView:
+				return "Due Bills"
+			case upcomingBillsTableView:
+				return "Upcoming (2 Days)"
+			case nextBillsTableView:
+				return "Next 30 days"
+			default:
+				return ""
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let sectionLabel = UILabel()
+		sectionLabel.textColor = .white
+		
+		switch tableView {
+			case dueBillsTableView:
+				sectionLabel.text = "Overdue Bills"
+			case upcomingBillsTableView:
+				sectionLabel.text = "Upcoming (2 Days)"
+			case nextBillsTableView:
+				sectionLabel.text = "Next 30 days"
+			default:
+				sectionLabel.text = ""
+		}
+
+		return sectionLabel
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
