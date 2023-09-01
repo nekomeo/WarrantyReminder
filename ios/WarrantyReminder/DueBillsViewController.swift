@@ -1,5 +1,5 @@
 //
-//  TabOneViewController.swift
+//  DueBillsViewController.swift
 //  WarrantyReminder
 //
 //  Created by Elle Tee on 2023-04-23.
@@ -7,37 +7,47 @@
 
 import UIKit
 
-class TabOneViewController: UIViewController {
-	
-	private let addButton: UIBarButtonItem = {
-		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
-		return addButton
-	}()
-	
+class DueBillsViewController: UIViewController {
+
 	private let editButton: UIBarButtonItem = {
 		let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: Any?.self, action: #selector(didPressEdit))
 		return editButton
 	}()
 
+	private let addButton: UIBarButtonItem = {
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
+		return addButton
+	}()
+
 //	let containerView = UIView(frame: UIScreen.main.bounds)
-	let containerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 400))
-	let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+	let dueBillsContainerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
+	let upcomingBillsContainerView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
+	let nextBillsContainerView = UIView(frame: CGRect(x: 0, y: 520, width: UIScreen.main.bounds.width, height: 200))
+	let dueBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		self.view.backgroundColor = UIColor.systemCyan
 		self.title = "Due Bills"
+		
+		dueBillsTableView.backgroundColor = .red
+		
+		upcomingBillsContainerView.backgroundColor = .orange
+		
+		nextBillsContainerView.backgroundColor = .blue
 			
-		view.addSubview(containerView)
-		containerView.addSubview(tableView)
+		view.addSubview(dueBillsContainerView)
+		view.addSubview(upcomingBillsContainerView)
+		view.addSubview(nextBillsContainerView)
+		dueBillsContainerView.addSubview(dueBillsTableView)
 			
-		tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.identifier)
-		tableView.delegate = self
-		tableView.dataSource = self
+		dueBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
+		dueBillsTableView.delegate = self
+		dueBillsTableView.dataSource = self
 			
-		self.navigationItem.rightBarButtonItem = addButton
 		self.navigationItem.leftBarButtonItem = editButton
+		self.navigationItem.rightBarButtonItem = addButton
 	}
   
 	override func didReceiveMemoryWarning() {
@@ -47,7 +57,7 @@ class TabOneViewController: UIViewController {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 
-		tableView.frame = containerView.bounds
+		dueBillsTableView.frame = dueBillsContainerView.bounds
 	}
 	
 	@objc func didPressAdd() {
@@ -69,21 +79,21 @@ class TabOneViewController: UIViewController {
     */
 }
 
-extension TabOneViewController: UITableViewDataSource, UITableViewDelegate {
+extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return "Due Bills"
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return 2
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: DueBillsTableViewCell.identifier, for: indexPath) as? DueBillsTableViewCell else {
 			return UITableViewCell()
 		}
 		
-		cell.configure(text: "Custom \(indexPath.row+1)")
+		cell.configure(text: "Due Bill \(indexPath.row+1)")
 		
 		return cell
 	}

@@ -1,5 +1,5 @@
 //
-//  ItemTableViewCell.swift
+//  DueBillsTableViewCell.swift
 //  WarrantyReminder
 //
 //  Created by Elle Tee on 2023-03-19.
@@ -7,28 +7,29 @@
 
 import UIKit
 
-class ItemTableViewCell: UITableViewCell {
-  static let identifier = "ItemTableViewCell"
+class DueBillsTableViewCell: UITableViewCell {
+  static let identifier = "DueBillsTableViewCell"
   
   private let detailButton: UIButton = {
     let detailButton = UIButton()
+
     detailButton.layer.borderWidth = 1
     detailButton.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
     
     return detailButton
   }()
   
-  private let someLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Item"
+  private let billName: UILabel = {
+    let billLabel = UILabel()
+    billLabel.text = "Item"
     
-    return label
+    return billLabel
   }()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     contentView.addSubview(detailButton)
-    contentView.addSubview(someLabel)
+    contentView.addSubview(billName)
   }
   
   required init?(coder: NSCoder) {
@@ -36,21 +37,21 @@ class ItemTableViewCell: UITableViewCell {
   }
   
   public func configure(text: String) {
-    someLabel.text = text
+    billName.text = text
   }
   
   override func prepareForReuse() {
     super.prepareForReuse()
     
-    someLabel.text = nil
+    billName.text = nil
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    let someSize = contentView.frame.size.height - 5
+    let detailButtonSize = contentView.frame.size.height - 5
     
-    someLabel.frame = CGRect(x: someSize - 15, y: 5, width: 100, height: someSize)
-    detailButton.frame = CGRect(x: contentView.frame.size.width - someSize - 10, y: 5, width: someSize, height: someSize)
+    billName.frame = CGRect(x: detailButtonSize - 15, y: 5, width: 100, height: detailButtonSize)
+    detailButton.frame = CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: 5, width: detailButtonSize / 2, height: detailButtonSize / 2)
   }
 }

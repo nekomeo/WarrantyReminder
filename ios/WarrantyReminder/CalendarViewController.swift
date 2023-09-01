@@ -1,5 +1,5 @@
 //
-//  TabTwoViewController.swift
+//  CalendarViewController.swift
 //  WarrantyReminder
 //
 //  Created by Elle Tee on 2023-04-23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabTwoViewController: UIViewController {
+class CalendarViewController: UIViewController {
 	
 	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
 	let tableView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
@@ -46,13 +46,13 @@ class TabTwoViewController: UIViewController {
     */
 }
 
-extension TabTwoViewController: UITableViewDataSource, UITableViewDelegate {
+extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 10
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: DueBillsTableViewCell.identifier, for: indexPath) as? DueBillsTableViewCell else {
 			return UITableViewCell()
 		}
 		

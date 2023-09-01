@@ -1,5 +1,5 @@
 //
-//  TabViewController.swift
+//  BottomTabViewController.swift
 //  WarrantyReminder
 //
 //  Created by Elle Tee on 2023-04-23.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class TabViewController: UITabBarController {
+class BottomTabViewController: UITabBarController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
-		self.tabBar.tintColor = .systemYellow
+		self.tabBar.tintColor = .white
 		self.tabBar.unselectedItemTintColor = .systemIndigo
 	}
 

@@ -1,5 +1,5 @@
 //
-//  TabThreeViewController.swift
+//  SettingsViewController.swift
 //  WarrantyReminder
 //
 //  Created by Elle Tee on 2023-04-23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabThreeViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
 			super.viewDidLoad()
