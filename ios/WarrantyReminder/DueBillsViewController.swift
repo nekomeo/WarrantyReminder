@@ -38,10 +38,13 @@ class DueBillsViewController: UIViewController {
 		upcomingBillsTableView.backgroundColor = .orange
 		nextBillsTableView.backgroundColor = .blue
 		
-		
 		dueBillsContainerView.addSubview(dueBillsTableView)
 		upcomingBillsContainerView.addSubview(upcomingBillsTableView)
 		nextBillsContainerView.addSubview(nextBillsTableView)
+		
+		dueBillsTableView.sectionHeaderTopPadding = 0
+		upcomingBillsTableView.sectionHeaderTopPadding = 0
+		nextBillsTableView.sectionHeaderTopPadding = 0
 			
 		dueBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
 		dueBillsTableView.delegate = self
@@ -95,35 +98,39 @@ class DueBillsViewController: UIViewController {
 }
 
 extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		switch tableView {
-			case dueBillsTableView:
-				return "Due Bills"
-			case upcomingBillsTableView:
-				return "Upcoming (2 Days)"
-			case nextBillsTableView:
-				return "Next 30 days"
-			default:
-				return ""
-		}
-	}
+//	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//		switch tableView {
+//			case dueBillsTableView:
+//				return "Due Bills"
+//			case upcomingBillsTableView:
+//				return "Upcoming (2 Days)"
+//			case nextBillsTableView:
+//				return "Next 30 days"
+//			default:
+//				return ""
+//		}
+//	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let sectionLabel = UILabel()
-		sectionLabel.textColor = .white
+		let billSectionLabel = UILabel()
+		billSectionLabel.textColor = .white
 		
 		switch tableView {
 			case dueBillsTableView:
-				sectionLabel.text = "Overdue Bills"
+				billSectionLabel.text = "Overdue Bills"
 			case upcomingBillsTableView:
-				sectionLabel.text = "Upcoming (2 Days)"
+				billSectionLabel.text = "Upcoming (2 Days)"
 			case nextBillsTableView:
-				sectionLabel.text = "Next 30 days"
+				billSectionLabel.text = "Next 30 days"
 			default:
-				sectionLabel.text = ""
+				billSectionLabel.text = ""
 		}
 
-		return sectionLabel
+		return billSectionLabel
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 40
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
