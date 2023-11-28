@@ -123,11 +123,11 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		switch tableView {
 			case dueBillsTableView:
-				billSectionLabel.text = "Overdue Bills"
+				billSectionLabel.text = "\u{23F5} Overdue Bills"
 			case upcomingBillsTableView:
-				billSectionLabel.text = "Upcoming (2 Days)"
+				billSectionLabel.text = "\u{23F7} Upcoming (2 Days)"
 			case nextBillsTableView:
-				billSectionLabel.text = "Next 30 days"
+				billSectionLabel.text = "\u{2714} Next 30 days"
 			default:
 				billSectionLabel.text = ""
 		}
