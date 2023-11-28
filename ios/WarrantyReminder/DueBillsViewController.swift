@@ -114,8 +114,9 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let billSectionLabelView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
 
-		let billSectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width, height: 20))
+		let billSectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width / 2, height: 20))
 		billSectionLabel.textColor = .white
+		billSectionLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		
 		switch tableView {
 			case dueBillsTableView:
