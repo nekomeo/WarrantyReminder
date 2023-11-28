@@ -112,7 +112,9 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 //	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let billSectionLabel = UILabel()
+		let billSectionLabelView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+
+		let billSectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width, height: 20))
 		billSectionLabel.textColor = .white
 		
 		switch tableView {
@@ -125,8 +127,10 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 			default:
 				billSectionLabel.text = ""
 		}
+		
+		billSectionLabelView.addSubview(billSectionLabel)
 
-		return billSectionLabel
+		return billSectionLabelView
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
