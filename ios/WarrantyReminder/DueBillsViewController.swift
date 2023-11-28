@@ -117,6 +117,9 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 		let billSectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width / 2, height: 20))
 		billSectionLabel.textColor = .white
 		billSectionLabel.font = UIFont.boldSystemFont(ofSize: 16)
+
+		let numOfBillsLabel = UILabel(frame: CGRect(x: self.view.frame.size.width - 90, y: 10, width: self.view.frame.size.width / 2, height: 20))
+		numOfBillsLabel.font = UIFont.systemFont(ofSize: 16)
 		
 		switch tableView {
 			case dueBillsTableView:
@@ -129,7 +132,11 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 				billSectionLabel.text = ""
 		}
 		
+		numOfBillsLabel.text = "1 Bill $0.00"
+		numOfBillsLabel.textColor = .white
+		
 		billSectionLabelView.addSubview(billSectionLabel)
+		billSectionLabelView.addSubview(numOfBillsLabel)
 
 		return billSectionLabelView
 	}
