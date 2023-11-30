@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import FSCalendar
 
 class CalendarViewController: UIViewController {
 	
-	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
-	let tableView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
+	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width))
+	let tableView = UIView(frame: CGRect(x: 0, y: 510, width: UIScreen.main.bounds.width, height: 100))
+	
+	var calendar = FSCalendar()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,6 +32,14 @@ class CalendarViewController: UIViewController {
 			
 		view.addSubview(calendarView)
 		view.addSubview(tableView)
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.width)
+		
+		view.addSubview(calendar)
 	}
 
 	override func didReceiveMemoryWarning() {
