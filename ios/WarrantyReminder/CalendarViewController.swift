@@ -103,7 +103,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 			return UITableViewCell()
 		}
 		
-		cell.configure(text: "Custom \(indexPath.row+1)")
+//		cell.configure(text: "Custom \(indexPath.row+1)")
 		
 		return cell
 	}

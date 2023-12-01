@@ -21,15 +21,59 @@ class CalendarTableViewCell: UITableViewCell {
 	
 	private let calendarBillName: UILabel = {
 		let calendarBillLabel = UILabel()
-		calendarBillLabel.text = "Item"
+		calendarBillLabel.text = "Bill name"
+		
+		return calendarBillLabel
+	}()
+	
+	private let calendarBillType: UILabel = {
+		let calendarBillLabel = UILabel()
+		calendarBillLabel.text = "Bill type"
+		
+		return calendarBillLabel
+	}()
+	
+	private let calendarBillAmount: UILabel = {
+		let calendarBillLabel = UILabel()
+		calendarBillLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		calendarBillLabel.text = "$1.00"
+		
+		return calendarBillLabel
+	}()
+	
+	private let calendarBillDueDate: UILabel = {
+		let calendarBillLabel = UILabel()
+		calendarBillLabel.text = "Due in x days"
+		
+		return calendarBillLabel
+	}()
+	
+	private let calendarBillRecurrence: UILabel = {
+		let calendarBillLabel = UILabel()
+		calendarBillLabel.text = "Once"
 		
 		return calendarBillLabel
 	}()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		
+		let firstRow = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 20))
+		let secondRow = UIView(frame: CGRect(x: 0, y: 20, width: 400, height: 20))
+		let thirdRow = UIView(frame: CGRect(x: 0, y: 40, width: 400, height: 20))
+
 		contentView.addSubview(checkmarkButton)
-		contentView.addSubview(calendarBillName)
+		contentView.addSubview(firstRow)
+		contentView.addSubview(secondRow)
+		contentView.addSubview(thirdRow)
+
+		firstRow.addSubview(calendarBillName)
+		firstRow.addSubview(calendarBillAmount)
+		
+		secondRow.addSubview(calendarBillType)
+		secondRow.addSubview(calendarBillDueDate)
+		
+		thirdRow.addSubview(calendarBillRecurrence)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -50,9 +94,15 @@ class CalendarTableViewCell: UITableViewCell {
 		super.layoutSubviews()
 		
 		let checkmarkButtonSize = contentView.frame.size.height
+
+		checkmarkButton.frame = CGRect(x: checkmarkButtonSize / 6, y: checkmarkButtonSize / 6, width: checkmarkButtonSize, height: checkmarkButtonSize)
 		
-		calendarBillName.frame = CGRect(x: checkmarkButtonSize / 2, y: 0, width: contentView.frame.size.width / 2, height: checkmarkButtonSize)
+		calendarBillName.frame = CGRect(x: checkmarkButtonSize * 2, y: 0, width: contentView.frame.size.width / 2, height: checkmarkButtonSize)
+		calendarBillAmount.frame = CGRect(x: 200, y: 0, width: 50, height: checkmarkButtonSize)
 		
-		checkmarkButton.frame = CGRect(x: contentView.frame.size.width - checkmarkButtonSize - 10, y: checkmarkButtonSize / 6, width: checkmarkButtonSize / 1.5, height: checkmarkButtonSize / 1.5)
+		calendarBillType.frame = CGRect(x: checkmarkButtonSize * 2, y: 20, width: 100, height: 20)
+		calendarBillDueDate.frame = CGRect(x: 200, y: 20, width: 100, height: 20)
+		
+		calendarBillRecurrence.frame = CGRect(x: 200, y: 25, width: 100, height: 20)
 	}
 }
