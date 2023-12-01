@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, FSCalendarDelegate {
 	
 	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width))
 	let tableView = UIView(frame: CGRect(x: 0, y: 510, width: UIScreen.main.bounds.width, height: 100))
@@ -32,6 +32,8 @@ class CalendarViewController: UIViewController {
 			
 		view.addSubview(calendarView)
 		view.addSubview(tableView)
+		
+		calendar.delegate = self
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -44,6 +46,15 @@ class CalendarViewController: UIViewController {
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
+	}
+	
+	func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+		let formatter = DateFormatter()
+
+		formatter.dateFormat = "EEEE MM-dd-YYYY"
+		let dateString = formatter.string(from: date)
+		
+		print("\(dateString)")
 	}
 
     /*
