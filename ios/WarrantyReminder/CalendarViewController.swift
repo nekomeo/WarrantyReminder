@@ -43,6 +43,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 		let filterSegment = UISegmentedControl(items: segmentItems)
 		filterSegment.selectedSegmentIndex = 0
 		filterSegment.layer.borderWidth = 1
+		filterSegment.layer.borderColor = UIColor.systemBlue.cgColor
+		filterSegment.selectedSegmentTintColor = UIColor.systemBlue
+		filterSegment.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .normal)
+		filterSegment.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
 
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
 
