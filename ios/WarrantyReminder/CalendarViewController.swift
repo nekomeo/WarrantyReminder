@@ -10,38 +10,51 @@ import FSCalendar
 
 class CalendarViewController: UIViewController, FSCalendarDelegate {
 	
-	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width))
-	let tableView = UIView(frame: CGRect(x: 0, y: 510, width: UIScreen.main.bounds.width, height: 100))
-	
 	var calendar = FSCalendar()
-
+	
+	let segmentItems = ["All", "Paid", "Unpaid"]
+	let calendarView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width))
+	let tableView = UIView(frame: CGRect(x: 0, y: 500, width: UIScreen.main.bounds.width, height: 100))
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		
 		self.view.backgroundColor = UIColor.systemPurple
-			
+		
 //		tableView.translatesAutoresizingMaskIntoConstraints = false
 //		tableView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 0).isActive = true
 //		tableView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
 //		tableView.leadingAnchor.constraint(equalTo: calendarView.leadingAnchor, constant: 0).isActive = true
 //		tableView.trailingAnchor.constraint(equalTo: calendarView.trailingAnchor, constant: 0).isActive = true
-			
+		
 		calendarView.backgroundColor = .white
 		tableView.backgroundColor = .systemCyan
 		self.title = "Calendar"
-			
+		
 		view.addSubview(calendarView)
 		view.addSubview(tableView)
-		
+
 		calendar.delegate = self
 	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
+		let filterSegment = UISegmentedControl(items: segmentItems)
+		filterSegment.selectedSegmentIndex = 0
+		filterSegment.layer.borderWidth = 1
+
+		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
+
 		calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.width)
 		
+		self.navigationItem.titleView = filterSegment
+		self.navigationItem.rightBarButtonItem = addButton
 		view.addSubview(calendar)
+	}
+	
+	@objc func didPressAdd() {
+		print("Add button pressed")
 	}
 
 	override func didReceiveMemoryWarning() {
