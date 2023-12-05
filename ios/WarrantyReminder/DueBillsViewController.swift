@@ -9,16 +9,6 @@ import UIKit
 
 class DueBillsViewController: UIViewController {
 
-	private let editButton: UIBarButtonItem = {
-		let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: Any?.self, action: #selector(didPressEdit))
-		return editButton
-	}()
-
-	private let addButton: UIBarButtonItem = {
-		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
-		return addButton
-	}()
-
 //	let containerView = UIView(frame: UIScreen.main.bounds)
 	let dueBillsContainerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
 	let upcomingBillsContainerView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
@@ -62,8 +52,8 @@ class DueBillsViewController: UIViewController {
 		view.addSubview(upcomingBillsContainerView)
 		view.addSubview(nextBillsContainerView)
 			
-		self.navigationItem.leftBarButtonItem = editButton
-		self.navigationItem.rightBarButtonItem = addButton
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didPressEdit))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didPressAdd))
 	}
   
 	override func didReceiveMemoryWarning() {
@@ -79,7 +69,9 @@ class DueBillsViewController: UIViewController {
 	}
 	
 	@objc func didPressAdd() {
-		print("Add button pressed")
+//		print("Add button pressed")
+		let addBillVC = AddBillViewController()
+		self.present(addBillVC, animated: true)
 	}
 	
 	@objc func didPressEdit() {
