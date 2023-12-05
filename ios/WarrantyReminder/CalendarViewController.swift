@@ -55,18 +55,20 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 		filterSegment.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .normal)
 		filterSegment.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
 
-		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: Any?.self, action: #selector(didPressAdd))
-
 		calendar.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.width)
 		calendarTableView.frame = calendarTableContainerView.bounds
 		
 		self.navigationItem.titleView = filterSegment
-		self.navigationItem.rightBarButtonItem = addButton
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didPressAdd))
 		view.addSubview(calendar)
 	}
 	
 	@objc func didPressAdd() {
-		print("Add button pressed")
+		let addBillVC = AddBillViewController()
+		let navController = UINavigationController(rootViewController: addBillVC)
+
+		navController.modalPresentationStyle = .fullScreen
+		present(navController, animated: true)
 	}
 
 	override func didReceiveMemoryWarning() {

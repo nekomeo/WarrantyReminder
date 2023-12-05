@@ -69,9 +69,11 @@ class DueBillsViewController: UIViewController {
 	}
 	
 	@objc func didPressAdd() {
-//		print("Add button pressed")
 		let addBillVC = AddBillViewController()
-		self.present(addBillVC, animated: true)
+		let navController = UINavigationController(rootViewController: addBillVC)
+
+		navController.modalPresentationStyle = .fullScreen
+		present(navController, animated: true)
 	}
 	
 	@objc func didPressEdit() {
