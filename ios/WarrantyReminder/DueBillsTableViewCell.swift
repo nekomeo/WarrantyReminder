@@ -10,18 +10,33 @@ import UIKit
 class DueBillsTableViewCell: UITableViewCell {
 	static let identifier = "DueBillsTableViewCell"
 	
-	private let checkmarkButton: UIButton = {
-		let checkmarkButton = UIButton()
+	//  private let checkmarkButton: UIButton = {
+	//		let detailButtonSize = contentView.frame.size.height
+	//    let checkmarkButton = UIButton(frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: detailButtonSize / 1.5, height: detailButtonSize / 1.5))
+	//
+	//    checkmarkButton.layer.borderWidth = 1
+	//    checkmarkButton.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+	//
+	//    return checkmarkButton
+	//  }()
+	private var checkbox: UIButton {
+		let detailButtonSize = contentView.frame.size.height
+		let checkboxButton = UIButton(frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: 50, height: detailButtonSize / 1.5))
+		checkboxButton.backgroundColor = .darkGray
+		checkboxButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		checkmarkButton.layer.borderWidth = 1
-		checkmarkButton.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+		checkboxButton.layer.borderWidth = 1
+		checkboxButton.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
 		
-		return checkmarkButton
-	}()
+		checkboxButton.addTarget(self, action: #selector(onCheckboxPress), for: .touchUpInside)
+		
+		return checkboxButton
+	}
 	
 	private let billName: UILabel = {
 		let billNameLabel = UILabel()
 		billNameLabel.text = "Bill Name"
+		billNameLabel.textAlignment = .left
 		
 		return billNameLabel
 	}()
@@ -29,6 +44,7 @@ class DueBillsTableViewCell: UITableViewCell {
 	private let billType: UILabel = {
 		let billTypeLabel = UILabel()
 		billTypeLabel.text = "Shopping"
+		billTypeLabel.textAlignment = .left
 		
 		return billTypeLabel
 	}()
@@ -36,6 +52,7 @@ class DueBillsTableViewCell: UITableViewCell {
 	private let billAmount: UILabel = {
 		let billAmountLabel = UILabel()
 		billAmountLabel.text = "$1.00"
+		billAmountLabel.textAlignment = .right
 		
 		return billAmountLabel
 	}()
@@ -43,6 +60,7 @@ class DueBillsTableViewCell: UITableViewCell {
 	private let billDueDate: UILabel = {
 		let billDueLabel = UILabel()
 		billDueLabel.text = "Due in x days"
+		billDueLabel.textAlignment = .right
 		
 		return billDueLabel
 	}()
@@ -50,6 +68,7 @@ class DueBillsTableViewCell: UITableViewCell {
 	private let billRecurrence: UILabel = {
 		let billRecurrenceLabel = UILabel()
 		billRecurrenceLabel.text = "Every month"
+		billRecurrenceLabel.textAlignment = .right
 		
 		return billRecurrenceLabel
 	}()
@@ -63,32 +82,58 @@ class DueBillsTableViewCell: UITableViewCell {
 		return v
 	}()
 	
-	private let label2: UILabel = {
-		let v = UILabel()
-		v.translatesAutoresizingMaskIntoConstraints = false
-		v.backgroundColor = .yellow
-		v.text = "Label 2"
-		v.textAlignment = .center
-		return v
+	private let mainStackView: UIStackView = {
+		let mainStack = UIStackView()
+		mainStack.translatesAutoresizingMaskIntoConstraints = false
+		mainStack.backgroundColor = .systemBlue
+		mainStack.axis = .horizontal
+		//		mainStack.alignment = .fill
+		mainStack.distribution = .fillEqually
+		mainStack.spacing = 8
+		return mainStack
 	}()
 	
-	private let label3: UILabel = {
-		let v = UILabel()
-		v.translatesAutoresizingMaskIntoConstraints = false
-		v.backgroundColor = .yellow
-		v.text = "Label 3"
-		v.textAlignment = .center
-		return v
+	private let hStackView1: UIStackView = {
+		let hStack1 = UIStackView()
+		hStack1.translatesAutoresizingMaskIntoConstraints = false
+		hStack1.backgroundColor = .systemPink
+		hStack1.axis = .horizontal
+		hStack1.alignment = .fill
+		hStack1.distribution = .fillEqually
+		hStack1.spacing = 8
+		return hStack1
 	}()
 	
-	private let theStackView: UIStackView = {
-		let v = UIStackView()
-		v.translatesAutoresizingMaskIntoConstraints = false
-		v.axis = .horizontal
-		v.alignment = .center
-		v.distribution = .fill
-		v.spacing = 8
-		return v
+	private let hStackView2: UIStackView = {
+		let hStack2 = UIStackView()
+		hStack2.translatesAutoresizingMaskIntoConstraints = false
+		hStack2.backgroundColor = .systemYellow
+		hStack2.axis = .horizontal
+		hStack2.alignment = .center
+		hStack2.distribution = .fill
+		hStack2.spacing = 8
+		return hStack2
+	}()
+	
+	private let hStackView3: UIStackView = {
+		let hStack3 = UIStackView()
+		hStack3.translatesAutoresizingMaskIntoConstraints = false
+		hStack3.backgroundColor = .systemIndigo
+		hStack3.axis = .horizontal
+		hStack3.alignment = .center
+		hStack3.distribution = .fill
+		hStack3.spacing = 8
+		return hStack3
+	}()
+	
+	private let vStackView: UIStackView = {
+		let verticalStack = UIStackView()
+		verticalStack.translatesAutoresizingMaskIntoConstraints = false
+		verticalStack.axis = .vertical
+		verticalStack.alignment = .trailing
+		verticalStack.distribution = .fill
+		verticalStack.spacing = 4
+		return verticalStack
 	}()
 	
 	func displayThings() {
@@ -143,29 +188,37 @@ class DueBillsTableViewCell: UITableViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		//		displayThings()
-		
-		let detailButtonSize = contentView.frame.size.height
-		
-		billName.frame = CGRect(x: detailButtonSize / 2, y: 0, width: contentView.frame.size.width / 2, height: detailButtonSize)
-		
-		checkmarkButton.frame = CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: detailButtonSize / 1.5, height: detailButtonSize / 1.5)
 	}
 	
-	func commonInit() -> Void {
+	private func commonInit() -> Void {
 		
 		backgroundColor = .systemMint
 		
-		theStackView.addArrangedSubview(label1)
-		theStackView.addArrangedSubview(label2)
-		theStackView.addArrangedSubview(label3)
+		mainStackView.addArrangedSubview(checkbox)
+		mainStackView.addArrangedSubview(vStackView)
 		
-		contentView.addSubview(theStackView)
+		hStackView1.addArrangedSubview(billName)
+		hStackView1.addArrangedSubview(billAmount)
+		
+		hStackView2.addArrangedSubview(billType)
+		hStackView2.addArrangedSubview(billDueDate)
+		
+		hStackView3.addArrangedSubview(billRecurrence)
+		
+		vStackView.addArrangedSubview(hStackView1)
+		vStackView.addArrangedSubview(hStackView2)
+		vStackView.addArrangedSubview(hStackView3)
+		
+		contentView.addSubview(mainStackView)
 		
 		NSLayoutConstraint.activate([
-			theStackView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 0.0),
-			theStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
-			theStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
-			theStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
-		])
+			mainStackView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 0.0),
+			mainStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
+			mainStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			mainStackView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: 0.0)])
+	}
+	
+	@objc func onCheckboxPress() {
+		print("box pressed")
 	}
 }
