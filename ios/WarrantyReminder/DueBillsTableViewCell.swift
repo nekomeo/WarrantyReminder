@@ -11,17 +11,14 @@ class DueBillsTableViewCell: UITableViewCell {
 	static let identifier = "DueBillsTableViewCell"
 	
 	// MARK: - UI Components
-	private var checkbox: UIButton {
-		let detailButtonSize = contentView.frame.size.height
-		let checkboxButton = UIButton(frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: 20, height: 20))
+	private var checkbox: UIButton =  {
+		let checkboxButton = UIButton()
 		checkboxButton.layer.borderWidth = 1
 		checkboxButton.layer.borderColor = .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
 		checkboxButton.translatesAutoresizingMaskIntoConstraints = false
 		
-		checkboxButton.addTarget(self, action: #selector(onCheckboxPress), for: .touchUpInside)
-		
 		return checkboxButton
-	}
+	}()
 	
 	private let billName: UILabel = {
 		let billNameLabel = UILabel()
@@ -156,11 +153,17 @@ class DueBillsTableViewCell: UITableViewCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		checkbox.addTarget(self, action: #selector(onCheckboxPress), for: .touchUpInside)
 	}
 	
 	private func commonInit() -> Void {
 		
 		backgroundColor = .systemMint
+		
+//		checkbox.frame = CGRect(x: 10, y: 6, width: 20, height: 20)
+//		let detailButtonSize = contentView.frame.size.height
+//	frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: 20, height: 20)
 		
 		mainStackView.addArrangedSubview(checkbox)
 		mainStackView.addArrangedSubview(vStackView)
