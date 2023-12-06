@@ -190,6 +190,24 @@ class DueBillsTableViewCell: UITableViewCell {
 			vStackView.bottomAnchor.constraint(equalTo: mainStackView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
 			vStackView.trailingAnchor.constraint(equalTo: mainStackView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
 			vStackView.widthAnchor.constraint(equalToConstant: 300)])
+		
+		NSLayoutConstraint.activate([
+			hStackView1.topAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.topAnchor, constant: 0.0),
+			hStackView1.leadingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			hStackView1.trailingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
+			hStackView1.widthAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.widthAnchor)])
+		
+		NSLayoutConstraint.activate([
+			hStackView2.topAnchor.constraint(equalTo: hStackView1.layoutMarginsGuide.bottomAnchor, constant: 4.0),
+			hStackView2.leadingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			hStackView2.trailingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
+			hStackView2.widthAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.widthAnchor)])
+		
+		NSLayoutConstraint.activate([
+			hStackView3.topAnchor.constraint(equalTo: hStackView2.layoutMarginsGuide.bottomAnchor, constant: 4.0),
+			hStackView3.leadingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			hStackView3.trailingAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
+			hStackView3.widthAnchor.constraint(equalTo: vStackView.layoutMarginsGuide.widthAnchor)])
 	}
 	
 	@objc func onCheckboxPress() {
