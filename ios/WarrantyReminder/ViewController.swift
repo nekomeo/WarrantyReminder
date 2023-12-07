@@ -14,27 +14,19 @@ class ViewController: UIViewController {
 		button.setTitle("Hello", for: .normal)
 		button.backgroundColor = .white
 		button.setTitleColor(.black, for: .normal)
-		button.layer.borderWidth = 1
-		button.layer.borderColor = UIColor.systemMint.cgColor
 		button.layer.cornerRadius = 10
 		return button
 	}()
-
-  let tableView = UITableView()
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		
 		helloButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-
-		view.backgroundColor = .systemMint
-		view.addSubview(helloButton)
+		helloButton.center = self.view.center
+		
+		self.view.backgroundColor = .systemMint
+		self.view.addSubview(helloButton)
 	}
-
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-		helloButton.center = view.center
-  }
 	
 	@objc func didTapButton() {
 		let bottomTabBarVC = BottomTabViewController()
