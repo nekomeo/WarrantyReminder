@@ -9,6 +9,7 @@ import UIKit
 
 class DueBillsTableViewCell: UITableViewCell {
 	static let identifier = "DueBillsTableViewCell"
+	private var isOverdue: Bool = false
 	
 	// MARK: - UI Components
 	private var checkbox: UIButton =  {
@@ -42,6 +43,7 @@ class DueBillsTableViewCell: UITableViewCell {
 		let billAmountLabel = UILabel()
 		billAmountLabel.text = "$1.00"
 		billAmountLabel.textAlignment = .right
+		billAmountLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		billAmountLabel.translatesAutoresizingMaskIntoConstraints = false
 		
 		return billAmountLabel
@@ -49,7 +51,7 @@ class DueBillsTableViewCell: UITableViewCell {
 	
 	private let billDueDate: UILabel = {
 		let billDueLabel = UILabel()
-		billDueLabel.text = "Due in x days"
+		billDueLabel.text = "Due in 2 days (Tue)"
 		billDueLabel.textAlignment = .right
 		billDueLabel.translatesAutoresizingMaskIntoConstraints = false
 		
@@ -125,8 +127,8 @@ class DueBillsTableViewCell: UITableViewCell {
 		verticalStack.alignment = .trailing
 		verticalStack.distribution = .fill
 		verticalStack.spacing = 4
-//		verticalStack.layer.borderWidth = 1
-//		verticalStack.layer.borderColor = .init(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+		//		verticalStack.layer.borderWidth = 1
+		//		verticalStack.layer.borderColor = .init(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 		
 		return verticalStack
 	}()
@@ -136,7 +138,6 @@ class DueBillsTableViewCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		commonInit()
-		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -153,17 +154,23 @@ class DueBillsTableViewCell: UITableViewCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-
+		
+		checkbox.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+		checkbox.layer.borderWidth = 1
+		checkbox.layer.borderColor = .init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		checkbox.addTarget(self, action: #selector(onCheckboxPress), for: .touchUpInside)
+		
+		billAmount.textColor = isOverdue ? .red : .init(red: 0.138, green: 0.008, blue: 0.854, alpha: 1.0)
+		//		billAmount.textColor = isOverdue ? .red : .init(red: 35/255, green: 2/255, blue: 198/255, alpha: 1.0)
 	}
 	
 	private func commonInit() -> Void {
 		
 		backgroundColor = .systemMint
 		
-//		checkbox.frame = CGRect(x: 10, y: 6, width: 20, height: 20)
-//		let detailButtonSize = contentView.frame.size.height
-//	frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: 20, height: 20)
+		//		checkbox.frame = CGRect(x: 10, y: 6, width: 20, height: 20)
+		//		let detailButtonSize = contentView.frame.size.height
+		//		frame: CGRect(x: contentView.frame.size.width - detailButtonSize - 10, y: detailButtonSize / 6, width: 20, height: 20)
 		
 		mainStackView.addArrangedSubview(checkbox)
 		mainStackView.addArrangedSubview(vStackView)

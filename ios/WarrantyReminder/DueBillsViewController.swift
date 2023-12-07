@@ -8,34 +8,63 @@
 import UIKit
 
 class DueBillsViewController: UIViewController {
-
-//	let containerView = UIView(frame: UIScreen.main.bounds)
-	let dueBillsContainerView = UIView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
-	let upcomingBillsContainerView = UIView(frame: CGRect(x: 0, y: 310, width: UIScreen.main.bounds.width, height: 200))
-	let nextBillsContainerView = UIView(frame: CGRect(x: 0, y: 520, width: UIScreen.main.bounds.width, height: 200))
+	private let dueBillsContainerView: UIView = {
+		let dueBillsContainerView = UIView()
+		dueBillsContainerView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return dueBillsContainerView
+	}()
+	private let upcomingBillsContainerView: UIView = {
+		let upcomingBillsContainerView = UIView()
+		upcomingBillsContainerView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return upcomingBillsContainerView
+	}()
+	private let nextBillsContainerView: UIView = {
+		let nextBillsContainerView = UIView()
+		nextBillsContainerView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return nextBillsContainerView
+	}()
 	
-	let dueBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-	let upcomingBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-	let nextBillsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-
+	private let dueBillsTableView: UITableView = {
+		let dueBillsTableView = UITableView()
+		dueBillsTableView.translatesAutoresizingMaskIntoConstraints = false
+		dueBillsTableView.sectionHeaderTopPadding = 0
+		dueBillsTableView.backgroundColor = .red
+		
+		return dueBillsTableView
+	}()
+	private let upcomingBillsTableView: UITableView = {
+		let upcomingBillsTableView = UITableView()
+		upcomingBillsTableView.translatesAutoresizingMaskIntoConstraints = false
+		upcomingBillsTableView.sectionHeaderTopPadding = 0
+		upcomingBillsTableView.backgroundColor = .orange
+		
+		return upcomingBillsTableView
+	}()
+	private let nextBillsTableView: UITableView = {
+		let nextBillsTableView = UITableView()
+		nextBillsTableView.translatesAutoresizingMaskIntoConstraints = false
+		nextBillsTableView.sectionHeaderTopPadding = 0
+		nextBillsTableView.backgroundColor = .blue
+		
+		return nextBillsTableView
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		self.view.backgroundColor = UIColor.systemCyan
+		
+		self.view.backgroundColor = .systemGray6
 		self.title = "Due Bills"
 		
-		dueBillsTableView.backgroundColor = .red
-		upcomingBillsTableView.backgroundColor = .orange
-		nextBillsTableView.backgroundColor = .blue
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didPressEdit))
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didPressAdd))
 		
 		dueBillsContainerView.addSubview(dueBillsTableView)
 		upcomingBillsContainerView.addSubview(upcomingBillsTableView)
 		nextBillsContainerView.addSubview(nextBillsTableView)
 		
-		dueBillsTableView.sectionHeaderTopPadding = 0
-		upcomingBillsTableView.sectionHeaderTopPadding = 0
-		nextBillsTableView.sectionHeaderTopPadding = 0
-			
 		dueBillsTableView.register(DueBillsTableViewCell.self, forCellReuseIdentifier: DueBillsTableViewCell.identifier)
 		dueBillsTableView.delegate = self
 		dueBillsTableView.dataSource = self
@@ -48,30 +77,59 @@ class DueBillsViewController: UIViewController {
 		nextBillsTableView.delegate = self
 		nextBillsTableView.dataSource = self
 		
-		view.addSubview(dueBillsContainerView)
-		view.addSubview(upcomingBillsContainerView)
-		view.addSubview(nextBillsContainerView)
-			
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didPressEdit))
-		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didPressAdd))
+		self.view.addSubview(dueBillsContainerView)
+		self.view.addSubview(upcomingBillsContainerView)
+		self.view.addSubview(nextBillsContainerView)
+		
+		layoutConstraints()
 	}
-  
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-
-		dueBillsTableView.frame = dueBillsContainerView.bounds
-		upcomingBillsTableView.frame = upcomingBillsContainerView.bounds
-		nextBillsTableView.frame = nextBillsContainerView.bounds
+	private func layoutConstraints() {
+		NSLayoutConstraint.activate([
+			dueBillsContainerView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 0.0),
+			dueBillsContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0),
+			dueBillsContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0.0),
+			dueBillsContainerView.heightAnchor.constraint(equalToConstant: 200)])
+		
+		NSLayoutConstraint.activate([
+			dueBillsTableView.topAnchor.constraint(equalTo: dueBillsContainerView.topAnchor, constant: 0.0),
+			dueBillsTableView.bottomAnchor.constraint(equalTo: dueBillsContainerView.bottomAnchor, constant: 0.0),
+			dueBillsTableView.leadingAnchor.constraint(equalTo: dueBillsContainerView.leadingAnchor, constant: 0.0),
+			dueBillsTableView.trailingAnchor.constraint(equalTo: dueBillsContainerView.trailingAnchor, constant: 0.0)])
+		
+		NSLayoutConstraint.activate([
+			upcomingBillsContainerView.topAnchor.constraint(equalTo: dueBillsContainerView.bottomAnchor, constant: 0.0),
+			upcomingBillsContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0),
+			upcomingBillsContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0.0),
+			upcomingBillsContainerView.heightAnchor.constraint(equalToConstant: 200)])
+		
+		NSLayoutConstraint.activate([
+			upcomingBillsTableView.topAnchor.constraint(equalTo: upcomingBillsContainerView.topAnchor, constant: 0.0),
+			upcomingBillsTableView.bottomAnchor.constraint(equalTo: upcomingBillsContainerView.bottomAnchor, constant: 0.0),
+			upcomingBillsTableView.leadingAnchor.constraint(equalTo: upcomingBillsContainerView.leadingAnchor, constant: 0.0),
+			upcomingBillsTableView.trailingAnchor.constraint(equalTo: upcomingBillsContainerView.trailingAnchor, constant: 0.0)])
+		
+		NSLayoutConstraint.activate([
+			nextBillsContainerView.topAnchor.constraint(equalTo: upcomingBillsContainerView.bottomAnchor, constant: 0.0),
+			nextBillsContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0.0),
+			nextBillsContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0.0),
+			nextBillsContainerView.heightAnchor.constraint(equalToConstant: 200)])
+		
+		NSLayoutConstraint.activate([
+			nextBillsTableView.topAnchor.constraint(equalTo: nextBillsContainerView.topAnchor, constant: 0.0),
+			nextBillsTableView.bottomAnchor.constraint(equalTo: nextBillsContainerView.bottomAnchor, constant: 0.0),
+			nextBillsTableView.leadingAnchor.constraint(equalTo: nextBillsContainerView.leadingAnchor, constant: 0.0),
+			nextBillsTableView.trailingAnchor.constraint(equalTo: nextBillsContainerView.trailingAnchor, constant: 0.0)])
 	}
 	
 	@objc func didPressAdd() {
 		let addBillVC = AddBillViewController()
 		let navController = UINavigationController(rootViewController: addBillVC)
-
+		
 		navController.modalPresentationStyle = .fullScreen
 		present(navController, animated: true)
 	}
@@ -79,39 +137,29 @@ class DueBillsViewController: UIViewController {
 	@objc func didPressEdit() {
 		print("Edit button pressed")
 	}
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
-//	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//		switch tableView {
-//			case dueBillsTableView:
-//				return "Due Bills"
-//			case upcomingBillsTableView:
-//				return "Upcoming (2 Days)"
-//			case nextBillsTableView:
-//				return "Next 30 days"
-//			default:
-//				return ""
-//		}
-//	}
+	//	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	//		switch tableView {
+	//			case dueBillsTableView:
+	//				return "Due Bills"
+	//			case upcomingBillsTableView:
+	//				return "Upcoming (2 Days)"
+	//			case nextBillsTableView:
+	//				return "Next 30 days"
+	//			default:
+	//				return ""
+	//		}
+	//	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let billSectionLabelView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-
+		
 		let billSectionLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.view.frame.size.width / 2, height: 20))
 		billSectionLabel.textColor = .white
 		billSectionLabel.font = UIFont.boldSystemFont(ofSize: 16)
-
+		
 		let numOfBillsLabel = UILabel(frame: CGRect(x: self.view.frame.size.width - 90, y: 10, width: self.view.frame.size.width / 2, height: 20))
 		numOfBillsLabel.font = UIFont.systemFont(ofSize: 16)
 		
@@ -131,7 +179,7 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		billSectionLabelView.addSubview(billSectionLabel)
 		billSectionLabelView.addSubview(numOfBillsLabel)
-
+		
 		return billSectionLabelView
 	}
 	
@@ -147,8 +195,6 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: DueBillsTableViewCell.identifier, for: indexPath) as? DueBillsTableViewCell else {
 			return UITableViewCell()
 		}
-		
-		cell.configure(text: "Due Bill \(indexPath.row+1)")
 		
 		return cell
 	}
