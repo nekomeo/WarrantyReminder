@@ -200,6 +200,11 @@ extension DueBillsViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let editVC = EditBillViewController()
+		let navController = UINavigationController(rootViewController: editVC)
+		navController.modalPresentationStyle = .fullScreen
+		present(navController, animated: true)
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
