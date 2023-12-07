@@ -20,39 +20,39 @@ class CalendarTableViewCell: UITableViewCell {
 	}()
 	
 	private let calendarBillName: UILabel = {
-		let calendarBillLabel = UILabel()
-		calendarBillLabel.text = "Bill name"
+		let calendarBillNameLabel = UILabel()
+		calendarBillNameLabel.text = "Bill name"
 		
-		return calendarBillLabel
+		return calendarBillNameLabel
 	}()
 	
 	private let calendarBillType: UILabel = {
-		let calendarBillLabel = UILabel()
-		calendarBillLabel.text = "Bill type"
+		let calendarBillTypeLabel = UILabel()
+		calendarBillTypeLabel.text = "Bill type"
 		
-		return calendarBillLabel
+		return calendarBillTypeLabel
 	}()
 	
 	private let calendarBillAmount: UILabel = {
-		let calendarBillLabel = UILabel()
-		calendarBillLabel.font = UIFont.boldSystemFont(ofSize: 16)
-		calendarBillLabel.text = "$1.00"
+		let calendarBillAmountLabel = UILabel()
+		calendarBillAmountLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		calendarBillAmountLabel.text = "$1.00"
 		
-		return calendarBillLabel
+		return calendarBillAmountLabel
 	}()
 	
 	private let calendarBillDueDate: UILabel = {
-		let calendarBillLabel = UILabel()
-		calendarBillLabel.text = "Due in x days"
+		let calendarBillDueLabel = UILabel()
+		calendarBillDueLabel.text = "Due in x days"
 		
-		return calendarBillLabel
+		return calendarBillDueLabel
 	}()
 	
 	private let calendarBillRecurrence: UILabel = {
-		let calendarBillLabel = UILabel()
-		calendarBillLabel.text = "Once"
+		let calendarBillRecurrenceLabel = UILabel()
+		calendarBillRecurrenceLabel.text = "Once"
 		
-		return calendarBillLabel
+		return calendarBillRecurrenceLabel
 	}()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
