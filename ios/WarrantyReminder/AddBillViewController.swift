@@ -9,16 +9,18 @@ import UIKit
 
 class AddBillViewController: UIViewController {
 	private let addBillContainerView: UIView = {
-		let view = UIView()
-		view.backgroundColor = .systemMint
+		let addBillContainerView = UIView()
+		addBillContainerView.translatesAutoresizingMaskIntoConstraints = false
+		addBillContainerView.backgroundColor = .systemMint
 		
-		return view
+		return addBillContainerView
 	}()
 	
 	private let addBillTableView: UITableView = {
-		let view = UITableView()
+		let addBillTableView = UITableView()
+		addBillTableView.translatesAutoresizingMaskIntoConstraints = false
 		
-		return view
+		return addBillTableView
 	}()
 	
 	override func viewDidLoad() {
@@ -31,9 +33,6 @@ class AddBillViewController: UIViewController {
 		
 		self.view.addSubview(addBillContainerView)
 		addBillContainerView.addSubview(addBillTableView)
-		
-		addBillContainerView.translatesAutoresizingMaskIntoConstraints = false
-		addBillTableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		addBillTableView.register(AddBillTableViewCell.self, forCellReuseIdentifier: AddBillTableViewCell.identifier)
 		addBillTableView.delegate = self
