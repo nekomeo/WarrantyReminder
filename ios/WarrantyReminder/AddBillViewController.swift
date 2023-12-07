@@ -24,7 +24,7 @@ class AddBillViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.view.backgroundColor = .systemRed
+		self.view.backgroundColor = .systemGray6
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didPressCancel))
 		self.navigationItem.title = "Add New Bill"
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didPressSave))
