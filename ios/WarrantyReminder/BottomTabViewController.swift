@@ -8,23 +8,25 @@
 import UIKit
 
 class BottomTabViewController: UITabBarController {
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
+		
+		let home = self.createNav(with: "Due Bills", and: UIImage(systemName: "folder"), viewController: DueBillsViewController())
+		let calendar = self.createNav(with: "Calendar", and: UIImage(systemName: "calendar"), viewController: CalendarViewController())
+		let settings = self.createNav(with: "Settings", and: UIImage(systemName: "gear"), viewController: SettingsViewController())
+		
+		self.setViewControllers([home, calendar, settings], animated: true)
+		self.tabBar.barTintColor = .darkGray
 		self.tabBar.tintColor = .white
-		self.tabBar.unselectedItemTintColor = .systemIndigo
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	
+	private func createNav(with title: String, and image: UIImage?, viewController: UIViewController) -> UINavigationController {
+		let navigation = UINavigationController(rootViewController: viewController)
+		
+		navigation.tabBarItem.title = title
+		navigation.tabBarItem.image = image
+		
+		return navigation
+	}
 }

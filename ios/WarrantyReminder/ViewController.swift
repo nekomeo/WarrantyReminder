@@ -39,26 +39,7 @@ class ViewController: UIViewController {
 	@objc func didTapButton() {
 		let bottomTabBarVC = BottomTabViewController()
 		
-		let vc1 = UINavigationController(rootViewController: DueBillsViewController())
-		let vc2 = UINavigationController(rootViewController: CalendarViewController())
-		let vc3 = UINavigationController(rootViewController: SettingsViewController())
-		
-		vc1.title = "Tab 1"
-		vc2.title = "Tab 2"
-		vc3.title = "Tab 3"
-		
-		bottomTabBarVC.setViewControllers([vc1, vc2, vc3], animated: false)
-		
-		guard let items = bottomTabBarVC.tabBar.items else { return }
-		
-		let images = ["folder", "calendar", "gear"]
-
-		for x in 0..<items.count {
-			items[x].image = UIImage(systemName: images[x])
-		}
-
-		bottomTabBarVC.modalPresentationStyle = .fullScreen
-		
+		bottomTabBarVC.tabBar.backgroundColor = .darkGray
 		bottomTabBarVC.modalPresentationStyle = .fullScreen
 		present(bottomTabBarVC, animated: true)
 	}
