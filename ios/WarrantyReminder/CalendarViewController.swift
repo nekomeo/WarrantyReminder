@@ -21,6 +21,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 		let calendar = FSCalendar()
 		calendar.translatesAutoresizingMaskIntoConstraints = false
 		calendar.backgroundColor = .systemBackground
+		calendar.appearance.titleDefaultColor = .darkGray
 		calendar.appearance.todayColor = .systemTeal
 		calendar.appearance.selectionColor = .systemIndigo
 		
@@ -38,15 +39,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 		
 		self.view.backgroundColor = .systemPurple
 		self.title = "Calendar"
-		
-		switch traitCollection.userInterfaceStyle {
-			case .light, .unspecified:
-				calendar.appearance.titleDefaultColor = .black
-			case .dark:
-				calendar.appearance.titleDefaultColor = .white
-			default:
-				calendar.appearance.titleDefaultColor = .black
-		}
 		
 		calendarContainerView.addSubview(calendar)
 		calendar.delegate = self
