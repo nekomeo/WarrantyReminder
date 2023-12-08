@@ -7,7 +7,16 @@
 
 import UIKit
 
+struct EditBillSection {
+	var sectionNames: [String]
+}
+
 class EditBillViewController: UIViewController {
+	private var editBillSections: [EditBillSection] = [
+		EditBillSection(sectionNames: ["Bill Name", "Category"]),
+		EditBillSection(sectionNames: ["Amount", "Auto Pay Bill"]),
+		EditBillSection(sectionNames: ["Date", "Notes"])]
+	
 	private let editBillContainerView: UIView = {
 		let editBillContainerView = UIView()
 		editBillContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,28 +68,16 @@ class EditBillViewController: UIViewController {
 			editBillContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0.0)])
 		
 		NSLayoutConstraint.activate([
-			editBillTableView.topAnchor.constraint(equalTo: editBillContainerView.layoutMarginsGuide.topAnchor, constant: 0.0),
-			//			editBillTableView.bottomAnchor.constraint(equalTo: editBillContainerView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
-			editBillTableView.leadingAnchor.constraint(equalTo: editBillContainerView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
-			editBillTableView.trailingAnchor.constraint(equalTo: editBillContainerView.layoutMarginsGuide.trailingAnchor, constant: 0.0),
-			editBillTableView.heightAnchor.constraint(equalToConstant: 300.0)])
+			editBillTableView.topAnchor.constraint(equalTo: editBillContainerView.topAnchor, constant: 0.0),
+			editBillTableView.leadingAnchor.constraint(equalTo: editBillContainerView.leadingAnchor, constant: 0.0),
+			editBillTableView.trailingAnchor.constraint(equalTo: editBillContainerView.trailingAnchor, constant: 0.0),
+			editBillTableView.heightAnchor.constraint(equalToConstant: 380.0)])
 		
 		NSLayoutConstraint.activate([
 			deleteButton.topAnchor.constraint(equalTo: editBillTableView.bottomAnchor, constant: 8.0),
 			deleteButton.centerXAnchor.constraint(equalTo: editBillContainerView.centerXAnchor, constant: 0.0),
 			deleteButton.widthAnchor.constraint(equalToConstant: 100.0)])
 	}
-	
-	
-	/*
-	 // MARK: - Navigation
-	 
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	 // Get the new view controller using segue.destination.
-	 // Pass the selected object to the new view controller.
-	 }
-	 */
 	
 	@objc func didPressCancel() {
 		self.dismiss(animated: true)
@@ -97,8 +94,25 @@ class EditBillViewController: UIViewController {
 }
 
 extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return self.editBillSections.count
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		tableView.backgroundColor = .clear
+		
+		let sectionHeaderView = UIView()
+		sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return sectionHeaderView
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 8
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		1
+		return self.editBillSections[section].sectionNames.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,6 +120,13 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 			return UITableViewCell()
 		}
 		
+		let title = self.editBillSections[indexPath.section].sectionNames[indexPath.row]
+		cell.textLabel?.text = title
+		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
