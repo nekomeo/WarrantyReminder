@@ -7,11 +7,20 @@
 
 import UIKit
 
+struct AddBillSection {
+	var sectionNames: [String]
+}
+
 class AddBillViewController: UIViewController {
+	private var addBillSections: [AddBillSection] = [
+		AddBillSection(sectionNames: ["Bill Name", "Category"]),
+		AddBillSection(sectionNames: ["Amount", "Auto Pay Bill"]),
+		AddBillSection(sectionNames: ["Date", "Notes"])]
+	
 	private let addBillContainerView: UIView = {
 		let addBillContainerView = UIView()
 		addBillContainerView.translatesAutoresizingMaskIntoConstraints = false
-		addBillContainerView.backgroundColor = .systemMint
+		addBillContainerView.backgroundColor = .systemPurple
 		
 		return addBillContainerView
 	}()
@@ -45,22 +54,11 @@ class AddBillViewController: UIViewController {
 			addBillContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0.0)])
 		
 		NSLayoutConstraint.activate([
-			addBillTableView.topAnchor.constraint(equalTo: addBillContainerView.layoutMarginsGuide.topAnchor, constant: 0.0),
+			addBillTableView.topAnchor.constraint(equalTo: addBillContainerView.topAnchor, constant: 0.0),
 			addBillTableView.bottomAnchor.constraint(equalTo: addBillContainerView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
-			addBillTableView.leadingAnchor.constraint(equalTo: addBillContainerView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
-			addBillTableView.trailingAnchor.constraint(equalTo: addBillContainerView.layoutMarginsGuide.trailingAnchor, constant: 0.0)])
+			addBillTableView.leadingAnchor.constraint(equalTo: addBillContainerView.leadingAnchor, constant: 0.0),
+			addBillTableView.trailingAnchor.constraint(equalTo: addBillContainerView.trailingAnchor, constant: 0.0)])
 	}
-	
-	
-	/*
-	 // MARK: - Navigation
-	 
-	 // In a storyboard-based application, you will often want to do a little preparation before navigation
-	 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	 // Get the new view controller using segue.destination.
-	 // Pass the selected object to the new view controller.
-	 }
-	 */
 	
 	@objc func didPressCancel() {
 		self.dismiss(animated: true)
@@ -73,8 +71,25 @@ class AddBillViewController: UIViewController {
 }
 
 extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return self.addBillSections.count
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		tableView.backgroundColor = .clear
+		
+		let sectionHeaderView = UIView()
+		sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return sectionHeaderView
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 8
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		1
+		return self.addBillSections[section].sectionNames.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,6 +97,13 @@ extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 			return UITableViewCell()
 		}
 		
+		let title = self.addBillSections[indexPath.section].sectionNames[indexPath.row]
+		cell.textLabel?.text = title
+		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
