@@ -160,8 +160,7 @@ class DueBillsTableViewCell: UITableViewCell {
 		checkbox.layer.borderColor = .init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		checkbox.addTarget(self, action: #selector(onCheckboxPress), for: .touchUpInside)
 		
-		billAmount.textColor = isOverdue ? .red : .init(red: 0.138, green: 0.008, blue: 0.854, alpha: 1.0)
-		//		billAmount.textColor = isOverdue ? .red : .init(red: 35/255, green: 2/255, blue: 198/255, alpha: 1.0)
+		billAmount.textColor = isOverdue ? .red : .init(red: 35/255.0, green: 2/255.0, blue: 198/255.0, alpha: 1.0)
 	}
 	
 	private func commonInit() -> Void {
