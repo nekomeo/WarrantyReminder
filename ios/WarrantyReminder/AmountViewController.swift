@@ -21,18 +21,19 @@ private enum CalcButton: String {
 	case add = "+"
 	case subtract = "-"
 	case divide = "÷"
-	case mutliply = "x"
+	case mutliply = "×"
 	case equal = "="
-	case clear = "AC"
+	case clearAll = "AC"
+	case clear = "C"
 	case decimal = "."
-	case percent = "%"
-	case negative = "-/+"
+	case negative = "±"
+	case delete = "⌫"
 	
 	var buttonColor: UIColor {
 		switch self {
-			case .add, .subtract, .mutliply, .divide, .equal:
+			case .add, .subtract, .mutliply, .divide, .negative:
 				return .orange
-			case .clear, .negative, .percent:
+			case .clearAll, .clear, .delete:
 				return .lightGray
 			default:
 				return UIColor(red: 55/255.0, green: 55/255.0, blue: 55/255.0, alpha: 1.0)
@@ -91,21 +92,21 @@ class AmountViewController: UIViewController {
 		
 		return unspecifiedAmountButton
 	}()
-	private let numberStackView: UIStackView = {
-		let numberStackView = UIStackView()
-		numberStackView.translatesAutoresizingMaskIntoConstraints = false
-		numberStackView.backgroundColor = .orange
+	private let calculatorView: UIView = {
+		let calculatorView = UIView()
+		calculatorView.translatesAutoresizingMaskIntoConstraints = false
+		calculatorView.backgroundColor = .systemGray4
 		
-		let calcButtons: [[CalcButton]] = [
-			[.clear, .negative, .percent, .divide],
-			[.seven, .eight, .nine, .mutliply],
-			[.four, .five, .six, .subtract],
-			[.one, .two, .three, .add],
-			[.zero, .decimal, .equal]
-		]
-		
-		return numberStackView
+		return calculatorView
 	}()
+	private let calcButtons: [[CalcButton]] = [
+		[.clearAll, .clear, .delete, .negative],
+		[.seven, .eight, .nine, .divide],
+		[.four, .five, .six, .mutliply],
+		[.one, .two, .three, .subtract],
+		[.zero, .decimal, .equal, .add],
+	]
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -118,7 +119,9 @@ class AmountViewController: UIViewController {
 		
 		amountContainerView.addArrangedSubview(displayView)
 		amountContainerView.addArrangedSubview(unspecifiedAmountButton)
-		amountContainerView.addArrangedSubview(numberStackView)
+		amountContainerView.addArrangedSubview(calculatorView)
+		
+		calculatorGrid(rows: 5, columns: 4, rootView: calculatorView)
 		
 		self.view.addSubview(amountContainerView)
 		
@@ -144,10 +147,45 @@ class AmountViewController: UIViewController {
 			unspecifiedAmountButton.trailingAnchor.constraint(equalTo: amountContainerView.trailingAnchor, constant: 0.0), unspecifiedAmountButton.heightAnchor.constraint(equalToConstant: 100.0)])
 		
 		NSLayoutConstraint.activate([
-			numberStackView.topAnchor.constraint(equalTo: unspecifiedAmountButton.bottomAnchor, constant: 0.0),
-			numberStackView.bottomAnchor.constraint(equalTo: amountContainerView.bottomAnchor, constant: 0.0),
-			numberStackView.leadingAnchor.constraint(equalTo: amountContainerView.leadingAnchor, constant: 0.0),
-			numberStackView.trailingAnchor.constraint(equalTo: amountContainerView.trailingAnchor, constant: 0.0)])
+			calculatorView.topAnchor.constraint(equalTo: unspecifiedAmountButton.bottomAnchor, constant: 0.0),
+			calculatorView.bottomAnchor.constraint(equalTo: amountContainerView.bottomAnchor, constant: 0.0),
+			calculatorView.leadingAnchor.constraint(equalTo: amountContainerView.leadingAnchor, constant: 0.0),
+			calculatorView.trailingAnchor.constraint(equalTo: amountContainerView.trailingAnchor, constant: 0.0)])
+	}
+	private func calculatorGrid(rows: Int, columns: Int, rootView: UIView){
+		let spacing = 2.0
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		stackView.distribution = .fillEqually
+		stackView.spacing = spacing
+		
+		for row in calcButtons {
+			let rowStackView = UIStackView()
+			rowStackView.axis = .horizontal
+			rowStackView.distribution = .fillEqually
+			rowStackView.spacing = spacing
+			
+			for button in row {
+				let buttonView = UIButton(type: .system)
+				buttonView.setTitle(button.rawValue, for: .normal)
+				buttonView.backgroundColor = button.buttonColor
+				buttonView.setTitleColor(.white, for: .normal)
+				buttonView.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+				buttonView.addTarget(self, action: #selector(didPressCalcButton), for: .touchUpInside)
+				rowStackView.addArrangedSubview(buttonView)
+			}
+			
+			stackView.addArrangedSubview(rowStackView)
+		}
+		
+		rootView.addSubview(stackView)
+		
+		NSLayoutConstraint.activate([
+			stackView.topAnchor.constraint(equalTo: rootView.topAnchor, constant: 0.0),
+			stackView.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: 0.0),
+			stackView.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: 0.0),
+			stackView.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: 0.0)])
 	}
 	
 	@objc func didPressCancel() {
@@ -160,5 +198,12 @@ class AmountViewController: UIViewController {
 	
 	@objc func didPressUnspecified() {
 		self.dismiss(animated: true)
+	}
+	
+	@objc func didPressCalcButton(_ sender: UIButton){
+		if let title = sender.currentTitle,
+			 let calcButton = CalcButton(rawValue: title) {
+			print("Tapped button: \(calcButton)")
+		}
 	}
 }
