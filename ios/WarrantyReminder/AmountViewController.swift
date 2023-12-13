@@ -67,7 +67,7 @@ class AmountViewController: UIViewController {
 	private let displayView: UIView = {
 		let displayView = UIView()
 		displayView.translatesAutoresizingMaskIntoConstraints = false
-		displayView.backgroundColor = .systemGray4
+		displayView.backgroundColor = .systemBackground
 		
 		let enterBillLabel = UILabel()
 		enterBillLabel.text = "Enter bill amount"
@@ -112,7 +112,7 @@ class AmountViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.view.backgroundColor = .systemPink
+		self.view.backgroundColor = .systemGray6
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didPressCancel))
 		self.navigationItem.title = "Amount"
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didPressDone))
