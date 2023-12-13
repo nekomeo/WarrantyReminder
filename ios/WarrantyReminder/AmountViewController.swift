@@ -50,6 +50,16 @@ class AmountViewController: UIViewController {
 		
 		return amountContainerView
 	}()
+	private let numberDisplayLabel: UILabel = {
+		let numberDisplayLabel = UILabel()
+		numberDisplayLabel.translatesAutoresizingMaskIntoConstraints = false
+		numberDisplayLabel.textAlignment = .right
+		numberDisplayLabel.font = UIFont.boldSystemFont(ofSize: 50.0)
+		numberDisplayLabel.numberOfLines = 1
+		numberDisplayLabel.lineBreakMode = .byClipping
+		
+		return numberDisplayLabel
+	}()
 	private let displayView: UIView = {
 		let displayView = UIView()
 		displayView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,26 +70,13 @@ class AmountViewController: UIViewController {
 		enterBillLabel.translatesAutoresizingMaskIntoConstraints = false
 		enterBillLabel.font = UIFont.systemFont(ofSize: 14.0)
 		
-		let numberDisplayLabel = UILabel()
-		numberDisplayLabel.text = "0"
-		numberDisplayLabel.translatesAutoresizingMaskIntoConstraints = false
-		numberDisplayLabel.textAlignment = .right
-		numberDisplayLabel.font = UIFont.boldSystemFont(ofSize: 50.0)
-		numberDisplayLabel.numberOfLines = 1
-		
 		displayView.addSubview(enterBillLabel)
-		displayView.addSubview(numberDisplayLabel)
 		
 		NSLayoutConstraint.activate([
 			enterBillLabel.topAnchor.constraint(equalTo: displayView.layoutMarginsGuide.topAnchor, constant: 0.0),
 			enterBillLabel.leadingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.leadingAnchor, constant: 8.0),
 			enterBillLabel.trailingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.trailingAnchor, constant: 8.0),
 			enterBillLabel.heightAnchor.constraint(equalToConstant: 28.0)])
-		
-		NSLayoutConstraint.activate([
-			numberDisplayLabel.bottomAnchor.constraint(equalTo: displayView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
-			numberDisplayLabel.leadingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
-			numberDisplayLabel.trailingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.trailingAnchor, constant: -8.0)])
 		
 		return displayView
 	}()
@@ -121,9 +118,14 @@ class AmountViewController: UIViewController {
 		amountContainerView.addArrangedSubview(unspecifiedAmountButton)
 		amountContainerView.addArrangedSubview(calculatorView)
 		
+		displayView.addSubview(numberDisplayLabel)
+		
 		calculatorGrid(rows: 5, columns: 4, rootView: calculatorView)
 		
 		self.view.addSubview(amountContainerView)
+		
+		numberDisplayLabel.text = "0"
+		numberDisplayLabel.becomeFirstResponder()
 		
 		layoutConstraints()
 	}
@@ -140,6 +142,11 @@ class AmountViewController: UIViewController {
 			displayView.leadingAnchor.constraint(equalTo: amountContainerView.leadingAnchor, constant: 0.0),
 			displayView.trailingAnchor.constraint(equalTo: amountContainerView.trailingAnchor, constant: 0.0),
 			displayView.heightAnchor.constraint(equalToConstant: 150.0)])
+		
+		NSLayoutConstraint.activate([
+			numberDisplayLabel.bottomAnchor.constraint(equalTo: displayView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
+			numberDisplayLabel.leadingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			numberDisplayLabel.trailingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.trailingAnchor, constant: -8.0)])
 		
 		NSLayoutConstraint.activate([
 			unspecifiedAmountButton.topAnchor.constraint(equalTo: displayView.bottomAnchor, constant: 0.0),
@@ -188,6 +195,20 @@ class AmountViewController: UIViewController {
 			stackView.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: 0.0)])
 	}
 	
+	private func updateDisplay(with calcButton: CalcButton) {
+		if calcButton == .clear {
+			numberDisplayLabel.text = "0"
+		} else {
+			if let currentText = numberDisplayLabel.text {
+				let newText = currentText + calcButton.rawValue
+				let maxAllowedLength = Int(numberDisplayLabel.font.pointSize)
+				let trimmedText = String(newText.suffix(maxAllowedLength))
+				
+				numberDisplayLabel.text = trimmedText
+			}
+		}
+	}
+	
 	@objc func didPressCancel() {
 		self.dismiss(animated: true)
 	}
@@ -204,6 +225,7 @@ class AmountViewController: UIViewController {
 		if let title = sender.currentTitle,
 			 let calcButton = CalcButton(rawValue: title) {
 			print("Tapped button: \(calcButton)")
+			updateDisplay(with: calcButton)
 		}
 	}
 }
