@@ -41,6 +41,10 @@ private enum CalcButton: String {
 	}
 }
 
+enum Operation {
+	case add, subtract, multiply, divide, none
+}
+
 class AmountViewController: UIViewController {
 	private let amountContainerView: UIStackView = {
 		let amountContainerView = UIStackView()
@@ -224,7 +228,7 @@ class AmountViewController: UIViewController {
 	@objc func didPressCalcButton(_ sender: UIButton){
 		if let title = sender.currentTitle,
 			 let calcButton = CalcButton(rawValue: title) {
-			print("Tapped button: \(calcButton)")
+			
 			updateDisplay(with: calcButton)
 		}
 	}
