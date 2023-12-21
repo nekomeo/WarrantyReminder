@@ -149,7 +149,7 @@ class AmountViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			numberDisplayLabel.bottomAnchor.constraint(equalTo: displayView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
-			numberDisplayLabel.leadingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+			numberDisplayLabel.leadingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.leadingAnchor, constant: 8.0),
 			numberDisplayLabel.trailingAnchor.constraint(equalTo: displayView.layoutMarginsGuide.trailingAnchor, constant: -8.0)])
 		
 		NSLayoutConstraint.activate([
@@ -205,7 +205,12 @@ class AmountViewController: UIViewController {
 		} else {
 			if let currentText = numberDisplayLabel.text,
 				 let newValue = Int(currentText + calcButton.rawValue) {
-				numberDisplayLabel.text = "\(newValue)"
+				let maxAllowedLength = 11
+				let newText = String(newValue)
+				let startIndex = max(0, newText.count - maxAllowedLength)
+				let trimmedText = String(newText.suffix(from: newText.index(newText.startIndex, offsetBy: startIndex)))
+				
+				numberDisplayLabel.text = trimmedText
 			}
 		}
 	}
