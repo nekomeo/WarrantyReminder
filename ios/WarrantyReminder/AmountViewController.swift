@@ -203,12 +203,9 @@ class AmountViewController: UIViewController {
 		if calcButton == .clear {
 			numberDisplayLabel.text = "0"
 		} else {
-			if let currentText = numberDisplayLabel.text {
-				let newText = currentText + calcButton.rawValue
-				let maxAllowedLength = Int(numberDisplayLabel.font.pointSize)
-				let trimmedText = String(newText.suffix(maxAllowedLength))
-				
-				numberDisplayLabel.text = trimmedText
+			if let currentText = numberDisplayLabel.text,
+				 let newValue = Int(currentText + calcButton.rawValue) {
+				numberDisplayLabel.text = "\(newValue)"
 			}
 		}
 	}
