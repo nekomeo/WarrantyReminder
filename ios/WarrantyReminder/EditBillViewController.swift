@@ -119,6 +119,14 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 		let dataForRow = sectionData[indexPath.section].rows[indexPath.row]
 		cell.configure(with: dataForRow)
 		
+		if indexPath.section == 1 && dataForRow == "Auto Pay Bill" {
+			cell.selectionStyle = .none
+			cell.accessoryType = .none
+		} else {
+			cell.selectionStyle = .default
+			cell.accessoryType = .disclosureIndicator
+		}
+		
 		return cell
 	}
 	
