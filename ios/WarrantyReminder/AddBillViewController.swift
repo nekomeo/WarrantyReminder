@@ -96,7 +96,25 @@ extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 		let dataForRow = sectionData[indexPath.section].rows[indexPath.row]
 		cell.configure(with: dataForRow)
 		
+		if indexPath.section == 1 && dataForRow == "Auto Pay Bill" {
+			cell.selectionStyle = .none
+			cell.accessoryType = .none
+		} else {
+			cell.selectionStyle = .default
+			cell.accessoryType = .disclosureIndicator
+		}
+		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		let heightForRow = sectionData[indexPath.section].rows[indexPath.row]
+		
+		if heightForRow == "Amount" {
+			return 60.0
+		} else {
+			return 44.0
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
