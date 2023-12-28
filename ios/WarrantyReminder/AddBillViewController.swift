@@ -7,15 +7,11 @@
 
 import UIKit
 
-struct AddBillSection {
-	var sectionNames: [String]
-}
-
 class AddBillViewController: UIViewController {
-	private var addBillSections: [AddBillSection] = [
-		AddBillSection(sectionNames: ["Bill Name", "Category"]),
-		AddBillSection(sectionNames: ["Amount", "Auto Pay Bill"]),
-		AddBillSection(sectionNames: ["Date", "Notes"])]
+	let dataManager = DataManager.shared
+	var sectionData: [SectionData] {
+		return dataManager.sectionData
+	}
 	
 	private let addBillContainerView: UIView = {
 		let addBillContainerView = UIView()
