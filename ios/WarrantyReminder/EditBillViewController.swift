@@ -7,15 +7,11 @@
 
 import UIKit
 
-struct EditBillSection {
-	var sectionNames: [String]
-}
-
 class EditBillViewController: UIViewController {
-	private var editBillSections: [EditBillSection] = [
-		EditBillSection(sectionNames: ["Bill Name", "Category"]),
-		EditBillSection(sectionNames: ["Amount", "Auto Pay Bill"]),
-		EditBillSection(sectionNames: ["Date", "Notes"])]
+	let dataManager = DataManager.shared
+	var sectionData: [SectionData] {
+		return dataManager.sectionData
+	}
 	
 	private let editBillContainerView: UIView = {
 		let editBillContainerView = UIView()
@@ -95,7 +91,7 @@ class EditBillViewController: UIViewController {
 
 extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return self.editBillSections.count
+		return sectionData.count
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -112,7 +108,7 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.editBillSections[section].sectionNames.count
+		return sectionData[section].rows.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,8 +116,8 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 			return UITableViewCell()
 		}
 		
-		let title = self.editBillSections[indexPath.section].sectionNames[indexPath.row]
-		cell.textLabel?.text = title
+		let dataForRow = sectionData[indexPath.section].rows[indexPath.row]
+		cell.configure(with: dataForRow)
 		
 		return cell
 	}
