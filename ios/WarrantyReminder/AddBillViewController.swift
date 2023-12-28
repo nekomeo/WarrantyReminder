@@ -68,7 +68,7 @@ class AddBillViewController: UIViewController {
 
 extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return self.addBillSections.count
+		return sectionData.count
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -85,7 +85,7 @@ extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.addBillSections[section].sectionNames.count
+		return sectionData[section].rows.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,8 +93,8 @@ extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 			return UITableViewCell()
 		}
 		
-		let title = self.addBillSections[indexPath.section].sectionNames[indexPath.row]
-		cell.textLabel?.text = title
+		let dataForRow = sectionData[indexPath.section].rows[indexPath.row]
+		cell.configure(with: dataForRow)
 		
 		return cell
 	}
