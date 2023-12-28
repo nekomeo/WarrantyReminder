@@ -33,7 +33,7 @@ class EditBillViewController: UIViewController {
 		deleteButton.translatesAutoresizingMaskIntoConstraints = false
 		deleteButton.backgroundColor = .red
 		deleteButton.setTitle("Delete", for: .normal)
-		deleteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+		deleteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
 		deleteButton.layer.cornerRadius = 10
 		
 		return deleteButton
@@ -70,9 +70,10 @@ class EditBillViewController: UIViewController {
 			editBillTableView.heightAnchor.constraint(equalToConstant: 380.0)])
 		
 		NSLayoutConstraint.activate([
-			deleteButton.topAnchor.constraint(equalTo: editBillTableView.bottomAnchor, constant: 8.0),
+			deleteButton.topAnchor.constraint(equalTo: editBillTableView.bottomAnchor, constant: 0.0),
 			deleteButton.centerXAnchor.constraint(equalTo: editBillContainerView.centerXAnchor, constant: 0.0),
-			deleteButton.widthAnchor.constraint(equalToConstant: 100.0)])
+			deleteButton.widthAnchor.constraint(equalToConstant: 150.0),
+			deleteButton.heightAnchor.constraint(equalToConstant: 50.0)])
 	}
 	
 	@objc func didPressCancel() {
@@ -128,6 +129,16 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 		
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		let heightForRow = sectionData[indexPath.section].rows[indexPath.row]
+		
+		if heightForRow == "Amount" {
+			return 60.0
+		} else {
+			return 44.0
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
