@@ -7,6 +7,8 @@
 
 import Foundation
 
+let billFontSize: CGFloat = 16.0
+
 struct SectionData {
 	var rows: [String]
 }
