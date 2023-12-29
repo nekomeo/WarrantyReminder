@@ -54,6 +54,30 @@ class AddBillTableViewCell: UITableViewCell {
 		
 		return autoPaySwitch
 	}()
+	private let dateStackView: UIStackView = {
+		let dateStackView = UIStackView()
+		dateStackView.translatesAutoresizingMaskIntoConstraints = false
+		dateStackView.axis = .vertical
+		dateStackView.distribution = .fillEqually
+		
+		let dueLabel = UILabel()
+		dueLabel.text = "7 Dec 2023"
+		dueLabel.font = UIFont.systemFont(ofSize: billFontSize)
+		
+		let repeatLabel = UILabel()
+		repeatLabel.text = "Repeat Never"
+		repeatLabel.font = UIFont.systemFont(ofSize: billFontSize)
+		
+		let endLabel = UILabel()
+		endLabel.text = "Ends 7 Dec 2023"
+		endLabel.font = UIFont.systemFont(ofSize: billFontSize)
+		
+		dateStackView.addArrangedSubview(dueLabel)
+		dateStackView.addArrangedSubview(repeatLabel)
+		dateStackView.addArrangedSubview(endLabel)
+		
+		return dateStackView
+	}()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -106,6 +130,23 @@ class AddBillTableViewCell: UITableViewCell {
 				textLabel!.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
 				autoPaySwitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 				autoPaySwitch.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: centerXConstant)])
+		}
+		
+		if data == "Date" {
+			textLabel!.translatesAutoresizingMaskIntoConstraints = false
+			
+			contentView.addSubview(textLabel!)
+			contentView.addSubview(dateStackView)
+			
+			dateStackView.addSubview(textLabel!)
+			
+			NSLayoutConstraint.activate([
+				textLabel!.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+				textLabel!.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0.0),
+				dateStackView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 0.0),
+				dateStackView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor, constant: 0.0),
+				dateStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: centerXConstant),
+				dateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0.0)])
 		}
 	}
 	

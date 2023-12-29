@@ -67,7 +67,7 @@ class EditBillViewController: UIViewController {
 			editBillTableView.topAnchor.constraint(equalTo: editBillContainerView.topAnchor, constant: 0.0),
 			editBillTableView.leadingAnchor.constraint(equalTo: editBillContainerView.leadingAnchor, constant: 0.0),
 			editBillTableView.trailingAnchor.constraint(equalTo: editBillContainerView.trailingAnchor, constant: 0.0),
-			editBillTableView.heightAnchor.constraint(equalToConstant: 380.0)])
+			editBillTableView.heightAnchor.constraint(equalToConstant: 440.0)])
 		
 		NSLayoutConstraint.activate([
 			deleteButton.topAnchor.constraint(equalTo: editBillTableView.bottomAnchor, constant: 8.0),
@@ -136,6 +136,8 @@ extension EditBillViewController: UITableViewDataSource, UITableViewDelegate {
 		
 		if heightForRow == "Amount" {
 			return 65.0
+		} else if heightForRow == "Date" {
+			return 85.0
 		} else {
 			return 44.0
 		}

@@ -111,7 +111,9 @@ extension AddBillViewController: UITableViewDataSource, UITableViewDelegate {
 		let heightForRow = sectionData[indexPath.section].rows[indexPath.row]
 		
 		if heightForRow == "Amount" {
-			return 60.0
+			return 65.0
+		} else if heightForRow == "Date" {
+			return 85.0
 		} else {
 			return 44.0
 		}
