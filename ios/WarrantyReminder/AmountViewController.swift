@@ -202,6 +202,8 @@ class AmountViewController: UIViewController {
 	private func updateDisplay(with calcButton: CalcButton) {
 		if calcButton == .clear {
 			numberDisplayLabel.text = "0"
+		} else if calcButton == .clearAll {
+			numberDisplayLabel.text = "0"
 		} else {
 			if let currentText = numberDisplayLabel.text,
 				 let newValue = Int(currentText + calcButton.rawValue) {
