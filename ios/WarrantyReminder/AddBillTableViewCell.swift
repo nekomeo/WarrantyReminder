@@ -42,6 +42,7 @@ class AddBillTableViewCell: UITableViewCell {
 		unspecifiedNote.numberOfLines = 2
 		unspecifiedNote.textAlignment = .center
 		unspecifiedNote.font = UIFont.systemFont(ofSize: 12.0)
+		unspecifiedNote.textColor = .lightGray
 		
 		return unspecifiedNote
 	}()
